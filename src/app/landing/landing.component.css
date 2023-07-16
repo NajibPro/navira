@@ -1,38 +1,3 @@
-@font-face {
-    font-family: 'Inter';
-    src: url('../../assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf') format('truetype');
-}
-
-:root{
-    --primary-color: #0075FF;
-}
-
-*{
-    font-family: 'Inter', 'Arial';
-    margin: 0;
-    scroll-behavior: smooth;
-    box-sizing: border-box;
-    overflow-x: hidden;
-}
-
-div{
-    display: flex;
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #499DFF;
-}
-
-app-landing{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #499DFF;
-}
-
 .landing{
     flex-direction: column;
     align-items: center;
@@ -53,17 +18,8 @@ button{
     cursor: pointer;
 }
 
-.earth{
-    background-image: url('imgs/earth.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 20px;
-    height: 20px;
-}
-
 .cute-pic{
-    background-image: url('imgs/happy-hanter.png');
+    background-image: url('../../assets/imgs/happy-hanter.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -73,7 +29,7 @@ button{
 }
 
 .blury1{
-    background-image: url('imgs/blur-down-left.png');
+    background-image: url('../../assets/imgs/blur-down-left.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -86,7 +42,7 @@ button{
 }
 
 .blury2{
-    background-image: url('imgs/blur-up-right.png');
+    background-image: url('../../assets/imgs/blur-up-right.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -96,31 +52,6 @@ button{
     top: 0;
     left: calc(100% - 30%);
     z-index: -1;
-}
-
-nav{
-    position: fixed;
-    align-items: center;
-    left: 0;
-    top: 0;
-    padding: 5px;
-    background-color: #499DFF;
-}
-
-.under-nav{
-    height: 30px;
-    width: 100%;
-}
-
-.language-selector{
-    gap: 5px;
-    align-items: center;
-    cursor: pointer;
-}
-
-.language{
-    color: white;
-    font-size: 20px;
 }
 
 .text-explanation{
