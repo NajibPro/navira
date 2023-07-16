@@ -1,5 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Inter';
+    src: url('assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf') format('truetype');
+}
+
+:root{
+    --primary-color: #0075FF;
+}
+
 *{
+    font-family: 'Inter', 'Arial';
     margin: 0;
-    padding: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+button{
+    cursor: pointer;
+}
+
+div{
+    display: flex;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #499DFF;
 }

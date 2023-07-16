@@ -1,0 +1,33 @@
+nav{
+    position: fixed;
+    align-items: center;
+    left: 0;
+    top: 0;
+    padding: 5px;
+    background-color: #499DFF;
+}
+
+.under-nav{
+    height: 30px;
+    width: 100%;
+}
+
+.language-selector{
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.language{
+    color: white;
+    font-size: 20px;
+}
+
+.earth{
+    background-image: url('../../assets/imgs/earth.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+}

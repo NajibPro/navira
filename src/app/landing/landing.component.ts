@@ -5,7 +5,6 @@ import { ViewEncapsulation } from '@angular/core';
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css'],
-  encapsulation: ViewEncapsulation.None
 })
 export class LandingComponent {
 
