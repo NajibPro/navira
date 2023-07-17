@@ -30,3 +30,18 @@ body {
     align-items: center;
     background-color: #499DFF;
 }
+
+app-landing,
+app-signup,
+app-login,
+router-outlet{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+app-signup,
+app-login{
+    margin-top: 70px;
+    margin-bottom: 36px;
+}

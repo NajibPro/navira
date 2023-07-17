@@ -40,8 +40,6 @@
 .person-physique{
     font-size: 20px;
     font-weight: 600;
-    background-color: white;
-    color: var(--primary-color);
     border: solid 2px var(--primary-color);
     padding: 0.8em 1.1em;
     cursor: pointer;
@@ -53,18 +51,38 @@
 
 .person-physique{
     border-radius: 0 15px 15px 0;
+}
+
+.selected-p{
     color: white;
     background-color: var(--primary-color);
+    transition: color 0.1s linear, background-color 0.1s linear;
+}
+
+.not-selected-p{
+    background-color: white;
+    color: var(--primary-color);
+    transition: color 0.1s linear, background-color 0.1s linear;
 }
 
 
-input{
+input,
+select{
     width: 100%;
     border: solid 2.5px #407BFF;
     border-radius: 10px;
     padding: 12px;
     font-size: 18px;
 }
+
+select {
+    -webkit-appearance: none; /* Remove default arrow */
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 20px; /* Add space for arrow icon */
+    background: url("../../assets/imgs/arrowdown.svg") no-repeat right 10px center; /* Replace arrow.png with your custom arrow image */
+    padding-right: 10px;
+  }
 
 .input-block-sm,
 .input-block{
@@ -115,7 +133,8 @@ input{
         justify-content: center;
     }
 
-    input{
+    input,
+    select{
         width: 100%;
     }
 
@@ -157,11 +176,17 @@ input{
 }
 
 @media screen and (max-width: 350px){
-    input{
-        height: none;
+    input,
+    select{
         width: 100%;
         aspect-ratio: 284/53;
     }
+
+    select {
+        height: 0;
+        padding-top: 8.5%; /* Adjust the padding-top to achieve the desired aspect ratio */
+        padding-bottom: 8.5%; /* Adjust the padding-bottom to achieve the desired aspect ratio */
+      }
 
     label{
         font-size: 1em;
