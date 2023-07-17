@@ -2,8 +2,8 @@
     <div class="signup-message">Créer un compte !</div>
     <form action="POST" class="signup-inputs-buttons">
         <div class="person-type">
-            <div class="person-moral">Personne morale</div>
-            <div class="person-physique">Personne Physique</div>
+            <div class="person-moral" [ngClass]="isPersonMoral ? 'selected-p' : 'not-selected-p'" (click)="switchPersonMoral()">Personne morale</div>
+            <div class="person-physique" [ngClass]="isPersonPhysique ? 'selected-p' : 'not-selected-p'" (click)="switchPersonPhysique()">Personne Physique</div>
         </div>
         
         <div class="signup-inputs">
@@ -24,7 +24,10 @@
 
             <div class="input-block-sm">
                 <label for="Wilaya">Wilaya</label>
-                <input type="text" name="Wilaya" id="Wilaya" class="Wilaya">
+                <select name="Wilaya" id="Wilaya" class="Wilaya">
+                    <option value="" disabled selected hidden></option>
+                    <option *ngFor="let Wilaya of wilayat" [value]="Wilaya">{{Wilaya}}</option>
+                </select>
             </div>
             <div class="input-block-sm">
                 <label for="card-number">Numero de carte d'identité</label>
@@ -48,8 +51,8 @@
         </div>
         
         <div class="signup-buttons">
-            <button class="signup-btn">Créer un compte</button>
-            <div class="login-instead">Vous avez déjà un compte ? <a href="#">Connectez-vous</a></div>
+            <button class="signup-btn" type="submit">Créer un compte</button>
+            <div class="login-instead">Vous avez déjà un compte ? <a [routerLink]="login">Connectez-vous</a></div>
         </div>
     </form>
 </div>

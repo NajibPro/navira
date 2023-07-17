@@ -7,5 +7,6 @@ import { ViewEncapsulation } from '@angular/core';
   styleUrls: ['./landing.component.css'],
 })
 export class LandingComponent {
-
+  signup = '/signup';
+  login = '/login';
 }
