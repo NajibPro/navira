@@ -1,0 +1,79 @@
+.procedures{
+    flex-direction: column;
+    margin-top: 106px;
+    gap: 100px;
+}
+
+.page-title{
+    font-size: clamp(28px, 2.5vw, 32px);
+    padding: 0 4%;
+
+}
+
+.procedures-types-list{
+    width: 100%;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    height: fit-content;
+    padding-bottom: 15px;
+}
+
+.procedure-type{
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: min(338px, 90%);
+    aspect-ratio: 338/323;
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.25);
+    padding: 27px 15px;
+    gap: 20px;
+}
+
+.type-name{
+    font-size: clamp(14px, 1.6em, 32px);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.type-logo,
+.type-arrow{
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 71px;
+    height: 71px;
+}
+
+.procedures-types-list > .procedure-type:nth-child(1) > .type-logo{
+    background-image: url('../../assets/imgs/hanter.svg');
+}
+
+.procedures-types-list > .procedure-type:nth-child(2) > .type-logo{
+    background-image: url('../../assets/imgs/aquarium.svg');
+}
+
+.procedures-types-list > .procedure-type:nth-child(3) > .type-logo{
+    background-image: url('../../assets/imgs/financeman.svg');
+}
+
+.type-arrow{
+    background-image: url('../../assets/imgs/arrowright.svg');
+}
+
+@media screen and (max-width: 370px){
+    .type-arrow,
+    .type-logo{
+        height: 41px;
+        aspect-ratio: 1;
+        background-size: contain;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .type-name{
+        font-size: 20px;
+    }
+}

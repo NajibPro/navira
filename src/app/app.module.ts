@@ -7,6 +7,7 @@ import { LandingComponent } from './landing/landing.component';
 import { LandingNavComponent } from './landing-nav/landing-nav.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { ProcedureTypeComponent } from './procedure-type/procedure-type.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { LoginComponent } from './login/login.component';
     LandingComponent,
     LandingNavComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    ProcedureTypeComponent
   ],
   imports: [
     BrowserModule,
