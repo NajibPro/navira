@@ -23,7 +23,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: min(310px, 90%);
+    width: min(312px, 90%);
     aspect-ratio: 338/323;
     background-color: var(--primary-color);
     border-radius: 15px;
