@@ -23,7 +23,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: min(338px, 90%);
+    width: min(310px, 90%);
     aspect-ratio: 338/323;
     background-color: var(--primary-color);
     border-radius: 15px;
@@ -33,7 +33,7 @@
 }
 
 .type-name{
-    font-size: clamp(14px, 1.6em, 32px);
+    font-size: clamp(14px, 1.3em, 32px);
     color: white;
     text-align: center;
     overflow: hidden;
