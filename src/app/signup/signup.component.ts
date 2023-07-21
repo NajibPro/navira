@@ -96,6 +96,16 @@ export class SignupComponent implements OnInit{
       
   }
 
+  detectErrors(event: any, error: any): void{
+    const clickedElement = event.target;
+    clickedElement.style.borderColor = error? "#ff0000" : "#00ff00";
+  }
+
+  commitErrors(event: any, error: any): void{
+    const clickedElement = event.target;
+    clickedElement.style.borderColor = error? "#ff0000" : "#0075FF";
+  }
+
   onSubmit(){
     const {personMoral ,lname, fname, bday, wilaya, cardNumber, phone, email, password} = this.formData;
     this.authService.signup(personMoral ,lname, fname, new Date(this.formData.bday), wilaya, cardNumber,

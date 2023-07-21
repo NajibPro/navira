@@ -40,6 +40,11 @@ input{
     font-size: 18px;
 }
 
+input:focus,
+select:focus{
+    outline: none;
+}
+
 .input-block{
     flex-direction: column;
     gap: 10px;
