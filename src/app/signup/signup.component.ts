@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit{
   signup = '/signup';
   login = '/login';
   
@@ -69,8 +72,43 @@ export class SignupComponent {
     "57. In Salah",
     "58. In Guezzam",
   ];
+
   isPersonMoral: boolean = true;
   isPersonPhysique: boolean = false;
+
+  formData = {
+    personMoral: this.isPersonMoral,
+    lname: "",
+    fname: "",
+    bday: Date(),
+    wilaya: "",
+    cardNumber: Number(),
+    phone: Number(),
+    email: "",
+    password: "",
+  }
+
+  constructor(private authService: AuthService, private router: Router){
+
+  }
+
+  ngOnInit(): void {
+      
+  }
+
+  onSubmit(){
+    const {personMoral ,lname, fname, bday, wilaya, cardNumber, phone, email, password} = this.formData;
+    this.authService.signup(personMoral ,lname, fname, new Date(this.formData.bday), wilaya, cardNumber,
+     phone, email, password).subscribe(
+      (response) => {
+        this.router.navigate([this.login])
+      },
+
+      (error) => {
+        console.error('Signup failed:', error);
+      }
+     )
+  }
   switchPersonMoral() : void{
     this.isPersonMoral = true;
     this.isPersonPhysique = false;
