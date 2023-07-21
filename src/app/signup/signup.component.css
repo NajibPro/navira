@@ -75,6 +75,13 @@ select{
     font-size: 18px;
 }
 
+input:focus,
+select:focus{
+    outline: none;
+}
+
+
+
 select {
     -webkit-appearance: none; /* Remove default arrow */
     -moz-appearance: none;

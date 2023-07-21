@@ -24,6 +24,16 @@ export class LoginComponent implements OnInit {
   login = '/login';
   procedures = '/procedures';
 
+  detectErrors(event: any, error: any): void{
+    const clickedElement = event.target;
+    clickedElement.style.borderColor = error? "#ff0000" : "#00ff00";
+  }
+
+  commitErrors(event: any, error: any): void{
+    const clickedElement = event.target;
+    clickedElement.style.borderColor = error? "#ff0000" : "#0075FF";
+  }
+
   onSubmit() {
     const { email, password } = this.formData;
     this.authService.login(email, password).subscribe(

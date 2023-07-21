@@ -4,12 +4,20 @@
         <div class="login-inputs">
             <div class="input-block">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" class="email" [(ngModel)] = "formData.email">
+                <input #email="ngModel" type="email" name="email" id="email" class="email"
+                 [(ngModel)] = "formData.email" 
+                 (input)="detectErrors($event, email.errors)"
+                 (click)="commitErrors($event, email.errors)"
+                (change)="commitErrors($event, email.errors)" required>
             </div>
 
             <div class="input-block">
                 <label for="password">Mot de pass</label>
-                <input type="password" name="password" id="password" class="password" [(ngModel)] = "formData.password">
+                <input #password="ngModel" type="password" name="password" id="password" class="password" 
+                [(ngModel)] = "formData.password" 
+                (input)="detectErrors($event, password.errors)"
+                (click)="commitErrors($event, password.errors)"
+                (change)="commitErrors($event, password.errors)" required>
             </div>
         </div>
         
