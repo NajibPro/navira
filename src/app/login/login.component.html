@@ -1,15 +1,15 @@
 <div class="login">
     <div class="login-message">Connectez-vous!</div>
-    <form action="POST" class="login-inputs-buttons">
+    <form (ngSubmit) = "onSubmit()" class="login-inputs-buttons">
         <div class="login-inputs">
             <div class="input-block">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" class="email">
+                <input type="email" name="email" id="email" class="email" [(ngModel)] = "formData.email">
             </div>
 
             <div class="input-block">
                 <label for="password">Mot de pass</label>
-                <input type="password" name="password" id="password" class="password">
+                <input type="password" name="password" id="password" class="password" [(ngModel)] = "formData.password">
             </div>
         </div>
         

@@ -63,7 +63,8 @@
               "browserTarget": "navira-app:build:production"
             },
             "development": {
-              "browserTarget": "navira-app:build:development"
+              "browserTarget": "navira-app:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
