@@ -2,19 +2,19 @@
     <div class="page-title">Choisissez le type de votre procédure:</div>
 
     <div class="procedures-types-list">
-        <div class="procedure-type">
+        <div class="procedure-type" (click)="showProcedures(1)">
             <div class="type-logo"></div>
             <div class="type-name">l’investissement dans les activités de la pêche</div>
             <div class="type-arrow"></div>
         </div>
 
-        <div class="procedure-type">
+        <div class="procedure-type" (click)="showProcedures(2)">
             <div class="type-logo"></div>
             <div class="type-name">l’investissement dans les activités de l’aquaculture</div>
             <div class="type-arrow"></div>
         </div>
 
-        <div class="procedure-type">
+        <div class="procedure-type" (click)="showProcedures(3)">
             <div class="type-logo"></div>
             <div class="type-name">l’investissement dans les activités de commercialisation</div>
             <div class="type-arrow"></div>
@@ -23,3 +23,5 @@
 
     </div>
 </div>
+
+<app-procedures [proceduresType]="proceduresType"></app-procedures>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -80,13 +81,19 @@ export class SignupComponent implements OnInit{
     personMoral: this.isPersonMoral,
     lname: "",
     fname: "",
+    cname: "",
     bday: Date(),
     wilaya: "",
     cardNumber: Number(),
-    phone: Number(),
-    email: "",
+    phone: Number(213),
+    userName: "",
     password: "",
+    cpassword: "",
   }
+
+  @ViewChild('signUpForm') signUpForm!: NgForm;
+  @ViewChildren('inputElement') inputElements!: QueryList<ElementRef>;
+  showErrors : boolean = false;
 
   constructor(private authService: AuthService, private router: Router){
 
@@ -106,10 +113,30 @@ export class SignupComponent implements OnInit{
     clickedElement.style.borderColor = error? "#ff0000" : "#0075FF";
   }
 
+  isPasswordMatch(): boolean {
+    console.log(this.formData.cpassword + " || " + this.formData.password)
+    console.log(this.formData.password === this.formData.cpassword);
+    return this.formData.password === this.formData.cpassword;
+  }
+
+  userNameNotUsed() : boolean {
+    return true;
+  }
+
   onSubmit(){
-    const {personMoral ,lname, fname, bday, wilaya, cardNumber, phone, email, password} = this.formData;
+
+    if(this.signUpForm.invalid){
+      this.showErrors = true;
+      this.inputElements.forEach(input => {
+        this.commitErrors(input.nativeElement, input.nativeElement.invalid)
+      });
+      return;
+    }
+
+    const {personMoral ,lname, fname, bday, wilaya, cardNumber, phone, userName, cname, password} =
+     this.formData;
     this.authService.signup(personMoral ,lname, fname, new Date(this.formData.bday), wilaya, cardNumber,
-     phone, email, password).subscribe(
+     phone, userName, cname, password).subscribe(
       (response) => {
         this.router.navigate([this.login])
       },

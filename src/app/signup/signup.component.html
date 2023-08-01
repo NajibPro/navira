@@ -1,6 +1,6 @@
 <div class="signup">
     <div class="signup-message">Créer un compte !</div>
-    <form (ngSubmit)="onSubmit()" class="signup-inputs-buttons">
+    <form #signUpForm="ngForm" (ngSubmit)="onSubmit()" class="signup-inputs-buttons">
         <div class="person-type">
             <div class="person-moral" [ngClass]="isPersonMoral ? 'selected-p' : 'not-selected-p'" (click)="switchPersonMoral()">Personne morale</div>
             <div class="person-physique" [ngClass]="isPersonPhysique ? 'selected-p' : 'not-selected-p'" (click)="switchPersonPhysique()">Personne Physique</div>
@@ -14,6 +14,10 @@
                  (input)="detectErrors($event, fname.errors)"
                  (click)="commitErrors($event, fname.errors)"
                  (change)="commitErrors($event, fname.errors)" required>
+
+                 <div class="input-error" *ngIf="(fname.errors && (fname.dirty || fname.touched)) || showErrors">
+                    <div *ngIf="fname.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
             </div>
 
             <div class="input-block-sm">
@@ -23,6 +27,10 @@
                 (input)="detectErrors($event, lname.errors)"
                 (click)="commitErrors($event, lname.errors)"
                 (change)="commitErrors($event, lname.errors)" required>
+
+                <div class="input-error" *ngIf="(lname.errors && (lname.dirty || lname.touched)) || showErrors">
+                    <div *ngIf="lname.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
             </div>
 
             <div class="input-block-sm">
@@ -32,6 +40,10 @@
                 (input)="detectErrors($event, bday.errors)"
                 (click)="commitErrors($event, bday.errors)"
                 (change)="commitErrors($event, bday.errors)" required>
+
+                <div class="input-error" *ngIf="(bday.errors && (bday.dirty || bday.touched)) || showErrors">
+                    <div *ngIf="bday.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
             </div>
 
             <div class="input-block-sm">
@@ -40,48 +52,107 @@
                  [(ngModel)] = "formData.wilaya"
                  (input)="detectErrors($event, wilaya.errors)"
                  (click)="commitErrors($event, wilaya.errors)"
-                 (change)="commitErrors($event, wilaya.errors)" required>
-                    <option value="" disabled selected hidden></option>
+                 (change)="commitErrors($event, wilaya.errors)" 
+                required>
+                    <option value="" disabled selected hidden>Choisissez ton wilaya</option>
                     <option *ngFor="let Wilaya of wilayat" [value]="Wilaya">{{Wilaya}}</option>
                 </select>
+
+                <div class="input-error" *ngIf="wilaya.errors && (wilaya.dirty || wilaya.touched) || showErrors">
+                    <div *ngIf="wilaya.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
             </div>
+
             <div class="input-block-sm">
                 <label for="card-number">Numero de carte d'identité</label>
                 <input #cardNumber="ngModel" type="number" name="card-number" id="card-number" class="card-number" 
                 [(ngModel)] = "formData.cardNumber" 
                 (input)="detectErrors($event, cardNumber.errors)"
                 (click)="commitErrors($event, cardNumber.errors)"
-                (change)="commitErrors($event, cardNumber.errors)" required>
+                (change)="commitErrors($event, cardNumber.errors)"
+                pattern="[0-9]{9}"
+                placeholder="XXXXXXXXX"
+                required>
+
+                <div class="input-error" *ngIf="(cardNumber.errors && (cardNumber.dirty || cardNumber.touched)) || showErrors">
+                    <div *ngIf="cardNumber.errors?.['required']">Ce champ est obligatoire.</div>
+                    <div *ngIf="cardNumber.errors?.['pattern']">Le numéro de carte contient 9 nombre.</div>
+                </div>
             </div>
 
             <div class="input-block-sm">
                 <label for="phone">Numero de téléphone</label>
                 <input #phone="ngModel" type="number" name="phone" id="phone" class="phone" 
                 [(ngModel)] = "formData.phone"
-                max="9999999999"
-                min="0100000000"
+                pattern="213[0-9]{9}"
+                placeholder="213XXXXXXXXX"
                 (input)="detectErrors($event, phone.errors)"
                 (click)="commitErrors($event, phone.errors)"
-                (change)="commitErrors($event, phone.errors)" 
+                (change)="commitErrors($event, phone.errors)"
                 required>
+
+                <div class="input-error" *ngIf="(phone.errors && (phone.dirty || phone.touched)) || showErrors">
+                    <div *ngIf="phone.errors?.['required']">Ce champ est obligatoire.</div>
+                    <div *ngIf="phone.errors?.['pattern']">Le numéro de téléphone est invalid.</div>
+                </div>
             </div>
 
             <div class="input-block">
-                <label for="email">Email</label>
-                <input #email="ngModel" type="email" name="email" id="email" class="email"
-                 [(ngModel)] = "formData.email" 
-                 (input)="detectErrors($event, email.errors)"
-                 (click)="commitErrors($event, email.errors)"
-                (change)="commitErrors($event, email.errors)" required>
+                <label for="username">Nom d'utilisateur</label>
+                <input #userName="ngModel" type="text" name="username" id="username" class="username"
+                 [(ngModel)] = "formData.userName" 
+                 (input)="detectErrors($event, userName.errors || !userNameNotUsed())"
+                 (click)="commitErrors($event, userName.errors || !userNameNotUsed())"
+                (change)="commitErrors($event, userName.errors || !userNameNotUsed())" required>
+
+                <div class="input-error" *ngIf="((userName.errors || userNameNotUsed()) && (userName.dirty || userName.touched)) || showErrors">
+                    <div *ngIf="userName.errors?.['required']">Ce champ est obligatoire.</div>
+                    <div *ngIf="!userNameNotUsed()">Ce mot d'utilisateur est déjà utiliser.</div>
+                </div>
+            </div>
+
+            <div class="input-block" *ngIf="isPersonMoral">
+                <label for="cname">Company Name</label>
+                <input #cname="ngModel" type="text" name="cname" id="cname" class="cname"
+                 [(ngModel)] = "formData.cname" 
+                 (input)="detectErrors($event, cname.errors)"
+                 (click)="commitErrors($event, cname.errors)"
+                (change)="commitErrors($event, cname.errors)" required>
+
+                <div class="input-error" *ngIf="(cname.errors && (cname.dirty || cname.touched)) || showErrors">
+                    <div *ngIf="cname.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
             </div>
 
             <div class="input-block">
                 <label for="password">Mot de pass</label>
                 <input #password="ngModel" type="password" name="password" id="password" class="password" 
-                [(ngModel)] = "formData.password" 
+                [(ngModel)] = "formData.password"
+                pattern="^.{8,}$"
                 (input)="detectErrors($event, password.errors)"
                 (click)="commitErrors($event, password.errors)"
                 (change)="commitErrors($event, password.errors)" required>
+
+                <div class="input-error" *ngIf="(password.errors && (password.dirty || password.touched)) || showErrors">
+                    <div *ngIf="password.errors?.['pattern']">Le mot de passe doit contenir au moins 8 caractères.</div>
+                    <div *ngIf="password.errors?.['required']">Le mot de passe est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="cpassword">Confirmer le mot de pass</label>
+                <input #cpassword="ngModel" type="password" name="cpassword" id="cpassword" class="cpassword" 
+                [(ngModel)] = "formData.cpassword"
+                pattern="^.{8,}$"
+                (input)="detectErrors($event, cpassword.errors || !isPasswordMatch())"
+                (click)="commitErrors($event, cpassword.errors || !isPasswordMatch())"
+                (change)="commitErrors($event, cpassword.errors || !isPasswordMatch())" required>
+
+                <div class="input-error" *ngIf="((cpassword.errors || !isPasswordMatch()) && (cpassword.dirty || cpassword.touched)) || showErrors">
+                    <div *ngIf="cpassword.errors?.['pattern']">La confirmation de mot de passe doit contenir au moins 8 caractères.</div>
+                    <div *ngIf="cpassword.errors?.['required']">La confirmation de mot de passe est obligatoire.</div>
+                    <div *ngIf="!isPasswordMatch()">La confirmation ne correspond pas au mot de passe</div>
+                </div>
             </div>
         </div>
         
