@@ -1,23 +1,33 @@
 <div class="login">
     <div class="login-message">Connectez-vous!</div>
-    <form (ngSubmit) = "onSubmit()" class="login-inputs-buttons">
+    <form #logInForm="ngForm" (ngSubmit) = "onSubmit()" class="login-inputs-buttons">
         <div class="login-inputs">
             <div class="input-block">
-                <label for="email">Email</label>
-                <input #email="ngModel" type="email" name="email" id="email" class="email"
-                 [(ngModel)] = "formData.email" 
-                 (input)="detectErrors($event, email.errors)"
-                 (click)="commitErrors($event, email.errors)"
-                (change)="commitErrors($event, email.errors)" required>
+                <label for="username">Nom d'utilisateur</label>
+                <input #inputElement #userName="ngModel" type="text" name="username" id="username" class="username"
+                 [(ngModel)] = "formData.userName"
+                 (input)="detectErrors($event.target, userName.errors)"
+                 (click)="commitErrors($event.target, userName.errors)"
+                (change)="commitErrors($event.target, userName.errors)" required>
+
+                <div class="input-error" *ngIf="(userName.errors && (userName.dirty || userName.touched)) || showErrors">
+                    <div *ngIf="userName.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
             </div>
 
             <div class="input-block">
                 <label for="password">Mot de pass</label>
-                <input #password="ngModel" type="password" name="password" id="password" class="password" 
-                [(ngModel)] = "formData.password" 
-                (input)="detectErrors($event, password.errors)"
-                (click)="commitErrors($event, password.errors)"
-                (change)="commitErrors($event, password.errors)" required>
+                <input #inputElement #password="ngModel" type="password" name="password" id="password" class="password" 
+                [(ngModel)] = "formData.password"
+                pattern="^.{8,}$"
+                (input)="detectErrors($event.target, password.errors)"
+                (click)="commitErrors($event.target, password.errors)"
+                (change)="commitErrors($event.target, password.errors)" required>
+
+                <div class="input-error" *ngIf="(password.errors && (password.dirty || password.touched)) || showErrors">
+                    <div *ngIf="password.errors?.['pattern']">Le mot de passe doit contenir au moins 8 caractères.</div>
+                    <div *ngIf="password.errors?.['required']">Le mot de passe est obligatoire.</div>
+                </div>
             </div>
         </div>
         

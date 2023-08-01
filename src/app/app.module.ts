@@ -8,7 +8,8 @@ import { LandingNavComponent } from './landing-nav/landing-nav.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ProcedureTypeComponent } from './procedure-type/procedure-type.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { ProceduresComponent } from './procedures/procedures.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms'
     SignupComponent,
     LoginComponent,
     ProcedureTypeComponent,
+    ProceduresComponent,
   ],
   imports: [
     BrowserModule,

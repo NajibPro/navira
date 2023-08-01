@@ -1,0 +1,31 @@
+.procedures-list{
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 50px 0;
+}
+
+.procedures-list-title{
+    width: 100%;
+    justify-content: center;
+    font-size: clamp(20px, 2vw, 32px);
+}
+
+.procedure{
+    padding: 0.9em;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: var(--primary-color);
+    width: min(1280px, 90%);
+    color: white;
+    font-size: clamp(14px, 2.5vw, 18px);
+}
+
+.procedure:hover{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+@media screen and (max-width: 350px){
+    .procedure{
+        font-size: clamp(10px, 4vw, 18px);
+    }
+}
