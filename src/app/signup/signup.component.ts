@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -12,6 +13,7 @@ import { NgForm } from '@angular/forms';
 export class SignupComponent implements OnInit{
   signup = '/signup';
   login = '/login';
+  procedures = '/procedures';
   
   wilayat: string[] = [
     "1. Adrar",
@@ -84,9 +86,10 @@ export class SignupComponent implements OnInit{
     cname: "",
     bday: Date(),
     wilaya: "",
-    cardNumber: Number(),
-    phone: Number(213),
+    cardNumber: "",
+    phone: "213",
     userName: "",
+    email: "",
     password: "",
     cpassword: "",
   }
@@ -114,9 +117,12 @@ export class SignupComponent implements OnInit{
   }
 
   isPasswordMatch(): boolean {
-    console.log(this.formData.cpassword + " || " + this.formData.password)
-    console.log(this.formData.password === this.formData.cpassword);
     return this.formData.password === this.formData.cpassword;
+  }
+
+  containsNonNumberCharacters(inputString: string): boolean {
+    const nonNumberRegex = /[^0-9]/;
+    return nonNumberRegex.test(inputString);
   }
 
   userNameNotUsed() : boolean {
@@ -133,12 +139,13 @@ export class SignupComponent implements OnInit{
       return;
     }
 
-    const {personMoral ,lname, fname, bday, wilaya, cardNumber, phone, userName, cname, password} =
+    const {personMoral ,lname, fname, bday, wilaya, cardNumber, phone, userName, cname, email, password, cpassword} =
      this.formData;
     this.authService.signup(personMoral ,lname, fname, new Date(this.formData.bday), wilaya, cardNumber,
-     phone, userName, cname, password).subscribe(
+     phone, userName, cname, email, password, cpassword).subscribe(
       (response) => {
-        this.router.navigate([this.login])
+        console.log(response)
+        this.router.navigate([this.procedures])
       },
 
       (error) => {

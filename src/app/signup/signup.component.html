@@ -65,35 +65,37 @@
 
             <div class="input-block-sm">
                 <label for="card-number">Numero de carte d'identité</label>
-                <input #cardNumber="ngModel" type="number" name="card-number" id="card-number" class="card-number" 
+                <input #cardNumber="ngModel" type="text" name="card-number" id="card-number" class="card-number" 
                 [(ngModel)] = "formData.cardNumber" 
-                (input)="detectErrors($event, cardNumber.errors)"
-                (click)="commitErrors($event, cardNumber.errors)"
-                (change)="commitErrors($event, cardNumber.errors)"
+                (input)="detectErrors($event, cardNumber.errors || containsNonNumberCharacters(formData.cardNumber))"
+                (click)="commitErrors($event, cardNumber.errors || containsNonNumberCharacters(formData.cardNumber))"
+                (change)="commitErrors($event, cardNumber.errors || containsNonNumberCharacters(formData.cardNumber))"
                 pattern="[0-9]{9}"
                 placeholder="XXXXXXXXX"
                 required>
 
-                <div class="input-error" *ngIf="(cardNumber.errors && (cardNumber.dirty || cardNumber.touched)) || showErrors">
+                <div class="input-error" *ngIf="((cardNumber.errors || containsNonNumberCharacters(formData.cardNumber)) && (cardNumber.dirty || cardNumber.touched)) || showErrors">
                     <div *ngIf="cardNumber.errors?.['required']">Ce champ est obligatoire.</div>
                     <div *ngIf="cardNumber.errors?.['pattern']">Le numéro de carte contient 9 nombre.</div>
+                    <div *ngIf="containsNonNumberCharacters(formData.cardNumber)">le numéro de carte ne contain que du nombres.</div>
                 </div>
             </div>
 
             <div class="input-block-sm">
                 <label for="phone">Numero de téléphone</label>
-                <input #phone="ngModel" type="number" name="phone" id="phone" class="phone" 
+                <input #phone="ngModel" type="text" name="phone" id="phone" class="phone" 
                 [(ngModel)] = "formData.phone"
                 pattern="213[0-9]{9}"
                 placeholder="213XXXXXXXXX"
-                (input)="detectErrors($event, phone.errors)"
-                (click)="commitErrors($event, phone.errors)"
-                (change)="commitErrors($event, phone.errors)"
+                (input)="detectErrors($event, phone.errors || containsNonNumberCharacters(formData.phone))"
+                (click)="commitErrors($event, phone.errors || containsNonNumberCharacters(formData.phone))"
+                (change)="commitErrors($event, phone.errors || containsNonNumberCharacters(formData.phone))"
                 required>
 
-                <div class="input-error" *ngIf="(phone.errors && (phone.dirty || phone.touched)) || showErrors">
+                <div class="input-error" *ngIf="((phone.errors || !containsNonNumberCharacters(formData.phone)) && (phone.dirty || phone.touched)) || showErrors">
                     <div *ngIf="phone.errors?.['required']">Ce champ est obligatoire.</div>
                     <div *ngIf="phone.errors?.['pattern']">Le numéro de téléphone est invalid.</div>
+                    <div *ngIf="containsNonNumberCharacters(formData.phone)">le numéro de téléphone ne contain que du nombres.</div>
                 </div>
             </div>
 
@@ -121,6 +123,21 @@
 
                 <div class="input-error" *ngIf="(cname.errors && (cname.dirty || cname.touched)) || showErrors">
                     <div *ngIf="cname.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="email">Email</label>
+                <input #email="ngModel" type="text" name="email" id="email" class="email"
+                 [(ngModel)] = "formData.email" 
+                 pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                 (input)="detectErrors($event, email.errors)"
+                 (click)="commitErrors($event, email.errors)"
+                (change)="commitErrors($event, email.errors)" required>
+
+                <div class="input-error" *ngIf="(email.errors && (email.dirty || email.touched)) || showErrors">
+                    <div *ngIf="email.errors?.['required']">Ce champ est obligatoire.</div>
+                    <div *ngIf="email.errors?.['pattern']">L'email est invalid.</div>
                 </div>
             </div>
 
