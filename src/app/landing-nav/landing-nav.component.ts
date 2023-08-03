@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-landing-nav',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./landing-nav.component.css']
 })
 export class LandingNavComponent {
+  constructor(){
 
+  }
 }

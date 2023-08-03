@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,9 @@ import { DatePipe } from '@angular/common';
 export class AuthService {
 
   constructor(private http: HttpClient) { }
+  
+  isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
 
   login(username: string, password: string) {
     const body = { username, password };
@@ -26,5 +30,9 @@ export class AuthService {
       const body = {moarale ,last_name, first_name, birthdate, wilaya, CNN, phone, username, company_name, email, password, password_confirmation};
       console.log(body);
       return this.http.post('http://127.0.0.1:8000/auth/register', body);
+  }
+
+  logout(){
+    this.isLoggedInSubject.next(false);
   }
 }

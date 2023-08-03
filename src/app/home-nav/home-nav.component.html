@@ -1,0 +1,17 @@
+<div class="landing-nav">
+    <nav>
+        <div class="language-selector">
+            <div class="earth"></div>
+            <div class="language">Français</div>
+        </div>
+
+        <div class="procedures navElement" [class.underline-expand]="navElementsList[0]" (click)="animateNav(0)">procédures</div>
+        <div class="procedures-progress navElement" [class.underline-expand]="navElementsList[1]" (click)="animateNav(1)">progrès</div>
+
+        <div class="profile">
+            <div class="profile-name navElement" [class.underline-expand]="navElementsList[2]" (click)="animateNav(2)">Profile</div>
+            <div class="profile-pic"></div>
+        </div>
+    </nav>
+</div>
+
