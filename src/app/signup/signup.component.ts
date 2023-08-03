@@ -14,6 +14,9 @@ export class SignupComponent implements OnInit{
   signup = '/signup';
   login = '/login';
   procedures = '/procedures';
+
+  backendErrors: any;
+  backendErrorKeys: string[] = [];
   
   wilayat: string[] = [
     "1. Adrar",
@@ -144,12 +147,18 @@ export class SignupComponent implements OnInit{
     this.authService.signup(personMoral ,lname, fname, new Date(this.formData.bday), wilaya, cardNumber,
      phone, userName, cname, email, password, cpassword).subscribe(
       (response) => {
+        this.backendErrors = null;
+        this.authService.isLoggedInSubject.next(true)
         console.log(response)
         this.router.navigate([this.procedures])
       },
 
       (error) => {
-        console.error('Signup failed:', error);
+        this.backendErrors = error.error.errors;
+        this.backendErrorKeys = Object.getOwnPropertyNames(this.backendErrors);
+        console.log(this.backendErrorKeys);
+        console.error('Signup failed:', error.error.errors);
+        window.scrollTo(0, 0);
       }
      )
   }

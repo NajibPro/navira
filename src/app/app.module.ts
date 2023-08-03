@@ -10,6 +10,9 @@ import { LoginComponent } from './login/login.component';
 import { ProcedureTypeComponent } from './procedure-type/procedure-type.component';
 import { FormsModule } from '@angular/forms';
 import { ProceduresComponent } from './procedures/procedures.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeNavComponent } from './home-nav/home-nav.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +23,15 @@ import { ProceduresComponent } from './procedures/procedures.component';
     LoginComponent,
     ProcedureTypeComponent,
     ProceduresComponent,
+    HomeNavComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

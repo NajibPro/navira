@@ -1,11 +1,19 @@
 <div class="signup">
     <div class="signup-message">Créer un compte !</div>
     <form #signUpForm="ngForm" (ngSubmit)="onSubmit()" class="signup-inputs-buttons">
+        <div *ngIf="backendErrors" class="alert alert-danger">
+            <strong>Error:</strong>
+            <ul>
+              <li *ngFor="let errorKey of backendErrorKeys">
+                {{ backendErrors[errorKey][0] }}
+              </li>
+            </ul>
+        </div>
         <div class="person-type">
             <div class="person-moral" [ngClass]="isPersonMoral ? 'selected-p' : 'not-selected-p'" (click)="switchPersonMoral()">Personne morale</div>
             <div class="person-physique" [ngClass]="isPersonPhysique ? 'selected-p' : 'not-selected-p'" (click)="switchPersonPhysique()">Personne Physique</div>
         </div>
-        
+
         <div class="signup-inputs">
             <div class="input-block-sm">
                 <label for="fname">Nom</label>

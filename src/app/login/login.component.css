@@ -8,6 +8,11 @@
     gap: 40px;
 }
 
+.alert{
+    width: 100%;
+    flex-direction: column;
+}
+
 .login-message{
     color: var(--primary-color);
     font-size: 32px;

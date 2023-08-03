@@ -34,7 +34,7 @@
 }
 
 .type-name{
-    font-size: clamp(14px, 1.3em, 32px);
+    font-size: clamp(14px, 1.23em, 32px);
     color: white;
     text-align: center;
     overflow: hidden;

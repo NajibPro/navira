@@ -1,0 +1,86 @@
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    align-items: center;
+    left: 0;
+    top: 0;
+    padding: 5px;
+    padding-top: 32px;
+    width: 100%;
+    
+}
+
+.under-nav{
+    height: 30px;
+    width: 100%;
+}
+
+.language-selector{
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.procedures-progress,
+.procedures,
+.profile,
+.language{
+    color: white;
+    font-size: 20px;
+}
+
+.earth,
+.profile-pic{
+    background-image: url('../../assets/imgs/earth.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+}
+
+.profile-pic{
+    background-image: url('../../assets/imgs/profilepic.svg');
+    width: 40px;
+    height: 40px;
+}
+
+.procedures-progress,
+.procedures,
+.profile-name{
+    color: var(--primary-color);
+    /*border-bottom: solid 4px var(--primary-color);*/
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.profile{
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.procedures::before,
+.procedures-progress::before,
+.profile-name::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px; 
+    background-color: var(--primary-color); 
+}
+
+.underline-expand::before {
+    animation: underline-expand-appear 0.3s forwards; 
+}
+
+@keyframes underline-expand-appear {
+    to {
+      width: 100%;
+    }
+}

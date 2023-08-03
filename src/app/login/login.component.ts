@@ -27,6 +27,9 @@ export class LoginComponent implements OnInit {
   login = '/login';
   procedures = '/procedures';
 
+  backendErrors: any;
+  backendErrorKeys: string[] = [];
+
   @ViewChild('logInForm') logInForm!: NgForm;
   @ViewChildren('inputElement') inputElements!: QueryList<ElementRef>;
 
@@ -51,10 +54,16 @@ export class LoginComponent implements OnInit {
     const { userName, password } = this.formData;
     this.authService.login(userName, password).subscribe(
       (response) => {
+        this.backendErrors = null;
+        this.authService.isLoggedInSubject.next(true)
+        console.log("the response: ", response);
         this.router.navigate([this.procedures]);
       },
       (error) => {
+        this.backendErrors = error.error.errors;
+        this.backendErrorKeys = Object.getOwnPropertyNames(this.backendErrors);
         console.error('Login failed:', error);
+        window.scrollTo(0, 0);
       }
     );
   }

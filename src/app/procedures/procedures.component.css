@@ -18,6 +18,7 @@
     width: min(1280px, 90%);
     color: white;
     font-size: clamp(14px, 2.5vw, 18px);
+    overflow: auto;
 }
 
 .procedure:hover{

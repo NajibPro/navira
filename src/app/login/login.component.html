@@ -1,6 +1,14 @@
 <div class="login">
     <div class="login-message">Connectez-vous!</div>
     <form #logInForm="ngForm" (ngSubmit) = "onSubmit()" class="login-inputs-buttons">
+        <div *ngIf="backendErrors" class="alert alert-danger">
+            <strong>Error:</strong>
+            <ul>
+              <li *ngFor="let errorKey of backendErrorKeys">
+                {{ backendErrors[errorKey][0] }}
+              </li>
+            </ul>
+        </div>
         <div class="login-inputs">
             <div class="input-block">
                 <label for="username">Nom d'utilisateur</label>
