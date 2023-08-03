@@ -1,15 +1,21 @@
 nav{
     display: flex;
-    justify-content: space-around;
+    justify-content: right;
     align-items: center;
-    position: fixed;
-    align-items: center;
+    position: absolute;
     left: 0;
     top: 0;
-    padding: 5px;
+    padding: 15px;
     padding-top: 32px;
     width: 100%;
+    overflow: visible;
     
+}
+
+.nav-writings{
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .under-nav{
@@ -84,3 +90,63 @@ nav{
       width: 100%;
     }
 }
+
+.xmark,
+.hamburger{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    visibility: hidden;
+    position: absolute;
+    cursor: pointer;
+}
+
+.xmark{
+    background-image: url('../../assets/imgs/xmark.svg');
+}
+
+.hamburger{
+    background-image: url('../../assets/imgs/hamburger.svg');
+}
+
+@media screen and (max-width: 650px){
+    nav{
+        padding-top: 15px;
+    }
+    .nav-writings{
+        position: absolute;
+        flex-direction: column-reverse;
+        align-items: center;
+        background-color: white;
+        z-index: 3;
+        overflow-y: visible;
+        width: min(80%, 314px);
+        aspect-ratio: 314/249;
+        border-radius: 20px;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 90px);
+        visibility: hidden;
+    }
+    
+    .language{
+        color: var(--primary-color);
+    }
+    
+    .earth{
+        background-image: url('../../assets/imgs/earth-blue.svg');
+    }
+    
+    .visible-mark{
+        visibility: visible;
+        position: static;
+    }
+
+    .visible-nav{
+        visibility: visible;
+    }
+}
+
+/*remember to add media query*/

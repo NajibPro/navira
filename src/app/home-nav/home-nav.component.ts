@@ -17,4 +17,10 @@ export class HomeNavComponent {
     this.navElementsList = this.navElementsList.map((value, index) => index === n);
     this.selectedIndex = n;
   }
+
+  navVisibile = false
+
+  toggleNavVisibility(){
+    this.navVisibile = !this.navVisibile
+  }
 }

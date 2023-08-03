@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 import { ProceduresComponent } from './procedures/procedures.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeNavComponent } from './home-nav/home-nav.component';
-import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { HomePageComponent } from './home-page/home-page.component';
     ProcedureTypeComponent,
     ProceduresComponent,
     HomeNavComponent,
-    HomePageComponent,
   ],
   imports: [
     BrowserModule,
