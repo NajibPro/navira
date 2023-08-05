@@ -1,0 +1,209 @@
+.progress{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+    overflow-y: visible;
+    height: fit-content;
+    background-color: #8DC2FF;;
+}
+
+.procedures-list{
+    width: min(100%, 830px);
+    padding: 5px 20px;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+}
+
+.waiting-procedures-title,
+.finished-procedures-title{
+    width: 100%;
+    justify-content: left;
+    font-size: clamp(20px, 2.5vw, 32px);
+}
+
+.procedure{
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    width: min(788px, 100%);
+    aspect-ratio: 788/79;
+    border-radius: min(20px, 2.28vw);
+    padding-left: min(19px, 2.28vw);
+    padding-right: min(31px, 3.73vw);
+    gap: 3%;
+}
+
+.progress-step-list{
+    gap: min(26px, 5.17%);
+    width: min(502px, 63.7%);
+}
+
+.progress-step{
+    flex-direction: column;
+    align-items: center;
+    width: min(150px, 29%);
+    gap: 4px;
+}
+
+.procedure-name{
+    font-size: clamp(10px, 1.92vw, 16px);
+    font-weight: bold;
+}
+
+.step-info{
+    gap: 5px;
+    align-items: center;
+}
+
+.step-name{
+    font-size: clamp(8px, 1.5vw, 11px);
+    font-weight: bold;
+    color: #bbb;
+}
+
+.step-logo-sent{
+    width: min(23px, 3vw);
+    aspect-ratio: 23/12;
+    background-image: url('../../assets/imgs/sentgray.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.step-logo-wait{
+    width: min(17px, 2.5vw);
+    aspect-ratio: 1;
+    background-image: url('../../assets/imgs/waitinggray.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.step-logo-accepted{
+    width: min(11px, 1.82vw);
+    aspect-ratio: 11/15;
+    background-image: url('../../assets/imgs/acceptedgray.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.step-line{
+    width: 100%;
+    background-color: #bbb;
+    aspect-ratio: 150/10;
+    border-radius: 8px;
+}
+
+.user-actions{
+    align-items: center;
+    gap: min(22px, 2.65vw);
+}
+
+.download{
+    width: min(25px, 4vw);
+    aspect-ratio: 1;
+    background-image: url('../../assets/imgs/downloadgray.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.list{
+    width: min(30px, 4.3vw);
+    aspect-ratio: 30/22;
+    background-image: url('../../assets/imgs/listgray.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.document-waiting-line{
+    background-color: #fcae1e;
+}
+
+.document-accepted-line{
+    background-color: #00FF80;
+    
+}
+
+.document-refused-line{
+    background-color: #ff0000;
+    
+}
+
+.document-sent-line{
+    background-color: #47B2FF;
+}
+
+.document-waiting-name{
+    color: #fcae1e;
+}
+
+.document-accepted-name{
+    color: #00FF80;
+    
+}
+
+.document-refused-name{
+    color: #ff0000;
+    
+}
+
+.document-sent-name{
+    color: #47B2FF;
+}
+
+.document-waiting-logo{
+    background-image: url('../../assets/imgs/waitingorange.svg');
+}
+
+.document-accepted-logo{
+    background-image: url('../../assets/imgs/accepted.svg');
+    
+}
+
+.document-refused-logo{
+    background-image: url('../../assets/imgs/refused.svg');
+    
+}
+
+.document-sent-logo{
+    background-image: url('../../assets/imgs/sent.svg');
+}
+
+.download-colored{
+    background-image: url('../../assets/imgs/download.svg');
+    cursor: pointer;
+}
+
+.list-colored{
+    background-image: url('../../assets/imgs/list.svg');
+    cursor: pointer;
+}
+
+@media screen and (max-width: 500px){
+    .procedure{
+        aspect-ratio: 300/50;
+    }
+
+    .step-line{
+        aspect-ratio: 100/10;
+    }
+    
+}
+
+@media screen and (max-width: 325px){
+    .step-logo-accepted,
+    .step-logo-sent,
+    .step-logo-wait{
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .procedures-list{
+        padding: 10px 5px;
+    }
+}
