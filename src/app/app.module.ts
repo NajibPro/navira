@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ProceduresComponent } from './procedures/procedures.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeNavComponent } from './home-nav/home-nav.component';
+import { ProgressComponent } from './progress/progress.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HomeNavComponent } from './home-nav/home-nav.component';
     ProcedureTypeComponent,
     ProceduresComponent,
     HomeNavComponent,
+    ProgressComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,77 @@
+<div class="progress">
+    <div class="procedures-list" *ngIf="progressList">
+        <div class="waiting-procedures-title">En Cours:</div>
+        <ng-container *ngFor="let progress of progressList">
+            <div class="procedure" *ngIf="!(progress.is_accepted || progress.is_refused)">
+                <div class="procedure-name">{{updateDynamicText(progress.procedure_number)}}</div>
+                <div class="progress-step-list">
+                    <div class="progress-step">
+                        <div class="step-info">
+                            <div class="step-name" [class.document-sent-name]="progress.is_sent">Envoyer</div>
+                            <div class="step-logo-sent" [class.document-sent-logo]="progress.is_sent"></div>
+                        </div>
+                        <div class="step-line" [class.document-sent-line]="progress.is_sent"></div>
+                    </div>
+
+                    <div class="progress-step">
+                        <div class="step-info">
+                            <div class="step-name" [class.document-waiting-name]="progress.is_waiting">En Cours</div>
+                            <div class="step-logo-wait" [class.document-waiting-logo]="progress.is_waiting"></div>
+                        </div>
+                        <div class="step-line" [class.document-waiting-line]="progress.is_waiting"></div>
+                    </div>
+
+                    <div class="progress-step">
+                        <div class="step-info">
+                            <div class="step-name" [class.document-accepted-name]="progress.is_accepted" [class.document-refused-name]="progress.is_refused">{{ progress.is_refused ? 'Refusé' : 'Accepté' }}</div>
+                            <div class="step-logo-accepted" [class.document-accepted-logo]="progress.is_accepted" [class.document-refused-logo]="progress.is_refused"></div>
+                        </div>
+                        <div class="step-line" [class.document-accepted-line]="progress.is_accepted" [class.document-refused-line]="progress.is_refused"></div>
+                    </div>
+                </div>
+
+                <div class="user-actions">
+                    <div class="download" [class.download-colored]="progress.is_accepted"></div>
+                    <div class="list" [class.list-colored]="progress.is_refused"></div>
+                </div>
+            </div>
+        </ng-container>
+        <div class="finished-procedures-title">Finie:</div>
+
+        <ng-container *ngFor="let progress of progressList">
+            <div class="procedure" *ngIf="progress.is_accepted || progress.is_refused">
+                <div class="procedure-name">{{updateDynamicText(progress.procedure_number)}}</div>
+                <div class="progress-step-list">
+                    <div class="progress-step">
+                        <div class="step-info">
+                            <div class="step-name" [class.document-sent-name]="progress.is_sent">Envoyer</div>
+                            <div class="step-logo-sent" [class.document-sent-logo]="progress.is_sent"></div>
+                        </div>
+                        <div class="step-line" [class.document-sent-line]="progress.is_sent"></div>
+                    </div>
+
+                    <div class="progress-step">
+                        <div class="step-info">
+                            <div class="step-name" [class.document-waiting-name]="progress.is_waiting">En Cours</div>
+                            <div class="step-logo-wait" [class.document-waiting-logo]="progress.is_waiting"></div>
+                        </div>
+                        <div class="step-line" [class.document-waiting-line]="progress.is_waiting"></div>
+                    </div>
+
+                    <div class="progress-step">
+                        <div class="step-info">
+                            <div class="step-name" [class.document-accepted-name]="progress.is_accepted" [class.document-refused-name]="progress.is_refused">{{ progress.is_refused ? 'Refusé' : 'Accepté' }}</div>
+                            <div class="step-logo-accepted" [class.document-accepted-logo]="progress.is_accepted" [class.document-refused-logo]="progress.is_refused"></div>
+                        </div>
+                        <div class="step-line" [class.document-accepted-line]="progress.is_accepted" [class.document-refused-line]="progress.is_refused"></div>
+                    </div>
+                </div>
+
+                <div class="user-actions">
+                    <div class="download" [class.download-colored]="progress.is_accepted"></div>
+                    <div class="list" [class.list-colored]="progress.is_refused"></div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
