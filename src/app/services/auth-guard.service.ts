@@ -10,7 +10,15 @@ export class AuthGuardService implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(): boolean {
-    let isLoggedIn : Boolean;
+
+    let isLoggedIn : boolean;
+    const token = localStorage.getItem('token');
+
+    if(token){
+      isLoggedIn = true
+      return isLoggedIn;
+    }
+
     this.authService.isLoggedIn$.subscribe((value) => {
       isLoggedIn = value;
 

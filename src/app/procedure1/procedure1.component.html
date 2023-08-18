@@ -1,0 +1,283 @@
+<div class="main">
+    <div class="main-message">Connectez-vous!</div>
+    <form #logInForm="ngForm" (ngSubmit) = "onSubmit()" class="main-inputs-buttons">
+        <div *ngIf="backendErrors" class="alert alert-danger">
+            <strong>Error:</strong>
+            <ul>
+              <li *ngFor="let errorKey of backendErrorKeys">
+                {{ backendErrors[errorKey][0] }}
+              </li>
+            </ul>
+        </div>
+        <div class="form-inputs">
+            <div class="input-block">
+                <label for="acte_de_naissance">Le numéro d'extrait d’acte de naissance de l'armateur ou du pêcheur</label>
+                <input #inputElement #acte_de_naissance="ngModel" type="text" name="acte_de_naissance" id="acte_de_naissance" class="acte_de_naissance"
+                 [(ngModel)] = "formData['acte_de_naissance']"
+                 (input)="inputFunctions.detectErrors($event.target, acte_de_naissance.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, acte_de_naissance.errors)"
+                (change)="inputFunctions.commitErrors($event.target, acte_de_naissance.errors)" required>
+
+                <div class="input-error" *ngIf="(acte_de_naissance.errors && (acte_de_naissance.dirty || acte_de_naissance.touched)) || showErrors">
+                    <div *ngIf="acte_de_naissance.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="photo_identite">Une photo d'identité</label>
+                <input #inputElement #photo_identite="ngModel" type="file" name="photo_identite" id="photo_identite" class="photo_identite"
+                 [(ngModel)] = "formData['photo_identite']"
+                 (input)="inputFunctions.detectErrors($event.target, photo_identite.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, photo_identite.errors)"
+                (change)="inputFunctions.commitErrors($event.target, photo_identite.errors)" required>
+
+                <div class="input-error" *ngIf="(photo_identite.errors && (photo_identite.dirty || photo_identite.touched)) || showErrors">
+                    <div *ngIf="photo_identite.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="attestation_assurance">L'attestation assurance</label>
+                <input #inputElement #attestation_assurance="ngModel" type="file" name="attestation_assurance" id="attestation_assurance" class="attestation_assurance"
+                 [(ngModel)] = "formData['attestation_assurance']"
+                 (input)="inputFunctions.detectErrors($event.target, attestation_assurance.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, attestation_assurance.errors)"
+                (change)="inputFunctions.commitErrors($event.target, attestation_assurance.errors)" required>
+
+                <div class="input-error" *ngIf="(attestation_assurance.errors && (attestation_assurance.dirty || attestation_assurance.touched)) || showErrors">
+                    <div *ngIf="attestation_assurance.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="attestation_assurance">Le récépissé de la redevance annuelle</label>
+                <input #inputElement #recepisse_redevance_annuelle="ngModel" type="file" name="recepisse_redevance_annuelle" id="recepisse_redevance_annuelle" class="recepisse_redevance_annuelle"
+                 [(ngModel)] = "formData['recepisse_redevance_annuelle']"
+                 (input)="inputFunctions.detectErrors($event.target, recepisse_redevance_annuelle.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, recepisse_redevance_annuelle.errors)"
+                (change)="inputFunctions.commitErrors($event.target, recepisse_redevance_annuelle.errors)" required>
+
+                <div class="input-error" *ngIf="(recepisse_redevance_annuelle.errors && (recepisse_redevance_annuelle.dirty || recepisse_redevance_annuelle.touched)) || showErrors">
+                    <div *ngIf="recepisse_redevance_annuelle.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="status_societe">Les statuts de la société</label>
+                <input #inputElement #status_societe="ngModel" type="file" name="status_societe" id="status_societe" class="status_societe"
+                 [(ngModel)] = "formData['status_societe']"
+                 (input)="inputFunctions.detectErrors($event.target, status_societe.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, status_societe.errors)"
+                (change)="inputFunctions.commitErrors($event.target, status_societe.errors)" required>
+
+                <div class="input-error" *ngIf="(status_societe.errors && (status_societe.dirty || status_societe.touched)) || showErrors">
+                    <div *ngIf="status_societe.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="numero_registre_de_commerce">Le numéro de registre du commerce</label>
+                <input #inputElement #numero_registre_de_commerce="ngModel" type="text" name="numero_registre_de_commerce" id="numero_registre_de_commerce" class="numero_registre_de_commerce"
+                 [(ngModel)] = "formData['numero_registre_de_commerce']"
+                 (input)="inputFunctions.detectErrors($event.target, numero_registre_de_commerce.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, numero_registre_de_commerce.errors)"
+                (change)="inputFunctions.commitErrors($event.target, numero_registre_de_commerce.errors)" required>
+
+                <div class="input-error" *ngIf="(numero_registre_de_commerce.errors && (numero_registre_de_commerce.dirty || numero_registre_de_commerce.touched)) || showErrors">
+                    <div *ngIf="numero_registre_de_commerce.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="nom_du_navire">Le nom du navire</label>
+                <input #inputElement #nom_du_navire="ngModel" type="text" name="nom_du_navire" id="nom_du_navire" class="nom_du_navire"
+                 [(ngModel)] = "formData['nom_du_navire']"
+                 (input)="inputFunctions.detectErrors($event.target, nom_du_navire.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, nom_du_navire.errors)"
+                (change)="inputFunctions.commitErrors($event.target, nom_du_navire.errors)" required>
+
+                <div class="input-error" *ngIf="(nom_du_navire.errors && (nom_du_navire.dirty || nom_du_navire.touched)) || showErrors">
+                    <div *ngIf="nom_du_navire.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="immatriculation_du_navire">L’immatriculation du navire</label>
+                <input #inputElement #immatriculation_du_navire="ngModel" type="text" name="immatriculation_du_navire" id="immatriculation_du_navire" class="immatriculation_du_navire"
+                 [(ngModel)] = "formData['immatriculation_du_navire']"
+                 (input)="inputFunctions.detectErrors($event.target, immatriculation_du_navire.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, immatriculation_du_navire.errors)"
+                (change)="inputFunctions.commitErrors($event.target, immatriculation_du_navire.errors)" required>
+
+                <div class="input-error" *ngIf="(immatriculation_du_navire.errors && (immatriculation_du_navire.dirty || immatriculation_du_navire.touched)) || showErrors">
+                    <div *ngIf="immatriculation_du_navire.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="annee_de_construction_du_navire">L’année de construction du navire</label>
+                <input #inputElement #annee_de_construction_du_navire="ngModel" type="text" name="annee_de_construction_du_navire" id="annee_de_construction_du_navire" class="annee_de_construction_du_navire"
+                 [(ngModel)] = "formData['annee_de_construction_du_navire']"
+                 (input)="inputFunctions.detectErrors($event.target, annee_de_construction_du_navire.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, annee_de_construction_du_navire.errors)"
+                (change)="inputFunctions.commitErrors($event.target, annee_de_construction_du_navire.errors)" required>
+
+                <div class="input-error" *ngIf="(annee_de_construction_du_navire.errors && (annee_de_construction_du_navire.dirty || annee_de_construction_du_navire.touched)) || showErrors">
+                    <div *ngIf="annee_de_construction_du_navire.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="date_de_mise_en_exploitation_du_navire">La date de mise en exploitation du navire</label>
+                <input #inputElement #date_de_mise_en_exploitation_du_navire="ngModel" type="date" name="date_de_mise_en_exploitation_du_navire" id="date_de_mise_en_exploitation_du_navire" class="date_de_mise_en_exploitation_du_navire"
+                 [(ngModel)] = "formData['date_de_mise_en_exploitation_du_navire']"
+                 (input)="inputFunctions.detectErrors($event.target, date_de_mise_en_exploitation_du_navire.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, date_de_mise_en_exploitation_du_navire.errors)"
+                (change)="inputFunctions.commitErrors($event.target, date_de_mise_en_exploitation_du_navire.errors)" required>
+
+                <div class="input-error" *ngIf="(date_de_mise_en_exploitation_du_navire.errors && (date_de_mise_en_exploitation_du_navire.dirty || date_de_mise_en_exploitation_du_navire.touched)) || showErrors">
+                    <div *ngIf="date_de_mise_en_exploitation_du_navire.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="longueur_totale_du_navire">La longueur totale du navire</label>
+                <input #inputElement #longueur_totale_du_navire="ngModel" type="text" name="longueur_totale_du_navire" id="longueur_totale_du_navire" class="longueur_totale_du_navire"
+                 [(ngModel)] = "formData['longueur_totale_du_navire']"
+                 (input)="inputFunctions.detectErrors($event.target, longueur_totale_du_navire.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, longueur_totale_du_navire.errors)"
+                (change)="inputFunctions.commitErrors($event.target, longueur_totale_du_navire.errors)" required>
+
+                <div class="input-error" *ngIf="(longueur_totale_du_navire.errors && (longueur_totale_du_navire.dirty || longueur_totale_du_navire.touched)) || showErrors">
+                    <div *ngIf="longueur_totale_du_navire.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="coque_du_navire">La coque du navire</label>
+                <input #inputElement #coque_du_navire="ngModel" type="text" name="coque_du_navire" id="coque_du_navire" class="coque_du_navire"
+                 [(ngModel)] = "formData['coque_du_navire']"
+                 (input)="inputFunctions.detectErrors($event.target, coque_du_navire.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, coque_du_navire.errors)"
+                (change)="inputFunctions.commitErrors($event.target, coque_du_navire.errors)" required>
+
+                <div class="input-error" *ngIf="(coque_du_navire.errors && (coque_du_navire.dirty || coque_du_navire.touched)) || showErrors">
+                    <div *ngIf="coque_du_navire.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="jauge_brute_du_navire">Le jauge brute du navire</label>
+                <input #inputElement #jauge_brute_du_navire="ngModel" type="text" name="jauge_brute_du_navire" id="jauge_brute_du_navire" class="jauge_brute_du_navire"
+                 [(ngModel)] = "formData['jauge_brute_du_navire']"
+                 (input)="inputFunctions.detectErrors($event.target, jauge_brute_du_navire.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, jauge_brute_du_navire.errors)"
+                (change)="inputFunctions.commitErrors($event.target, jauge_brute_du_navire.errors)" required>
+
+                <div class="input-error" *ngIf="(jauge_brute_du_navire.errors && (jauge_brute_du_navire.dirty || jauge_brute_du_navire.touched)) || showErrors">
+                    <div *ngIf="jauge_brute_du_navire.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="puissance_du_moteur">La puissance du moteur</label>
+                <input #inputElement #puissance_du_moteur="ngModel" type="text" name="puissance_du_moteur" id="puissance_du_moteur" class="puissance_du_moteur"
+                 [(ngModel)] = "formData['puissance_du_moteur']"
+                 (input)="inputFunctions.detectErrors($event.target, puissance_du_moteur.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, puissance_du_moteur.errors)"
+                (change)="inputFunctions.commitErrors($event.target, puissance_du_moteur.errors)" required>
+
+                <div class="input-error" *ngIf="(puissance_du_moteur.errors && (puissance_du_moteur.dirty || puissance_du_moteur.touched)) || showErrors">
+                    <div *ngIf="puissance_du_moteur.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="marque_du_moteur">La mark du moteur</label>
+                <input #inputElement #marque_du_moteur="ngModel" type="text" name="marque_du_moteur" id="marque_du_moteur" class="marque_du_moteur"
+                 [(ngModel)] = "formData['marque_du_moteur']"
+                 (input)="inputFunctions.detectErrors($event.target, marque_du_moteur.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, marque_du_moteur.errors)"
+                (change)="inputFunctions.commitErrors($event.target, marque_du_moteur.errors)" required>
+
+                <div class="input-error" *ngIf="(marque_du_moteur.errors && (marque_du_moteur.dirty || marque_du_moteur.touched)) || showErrors">
+                    <div *ngIf="marque_du_moteur.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="numero_de_serie_du_moteur">Le numéro de série du moteur</label>
+                <input #inputElement #numero_de_serie_du_moteur="ngModel" type="text" name="numero_de_serie_du_moteur" id="numero_de_serie_du_moteur" class="numero_de_serie_du_moteur"
+                 [(ngModel)] = "formData['numero_de_serie_du_moteur']"
+                 (input)="inputFunctions.detectErrors($event.target, numero_de_serie_du_moteur.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, numero_de_serie_du_moteur.errors)"
+                (change)="inputFunctions.commitErrors($event.target, numero_de_serie_du_moteur.errors)" required>
+
+                <div class="input-error" *ngIf="(numero_de_serie_du_moteur.errors && (numero_de_serie_du_moteur.dirty || numero_de_serie_du_moteur.touched)) || showErrors">
+                    <div *ngIf="numero_de_serie_du_moteur.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="pv_de_visite_de_securie_du_navire">Le procès-verbal de visite de sécurité du navire délivré par le Service National des Gardes Cote</label>
+                <input #inputElement #pv_de_visite_de_securie_du_navire="ngModel" type="file" name="pv_de_visite_de_securie_du_navire" id="pv_de_visite_de_securie_du_navire" class="pv_de_visite_de_securie_du_navire"
+                 [(ngModel)] = "formData['pv_de_visite_de_securie_du_navire']"
+                 (input)="inputFunctions.detectErrors($event.target, pv_de_visite_de_securie_du_navire.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, pv_de_visite_de_securie_du_navire.errors)"
+                (change)="inputFunctions.commitErrors($event.target, pv_de_visite_de_securie_du_navire.errors)" required>
+
+                <div class="input-error" *ngIf="(pv_de_visite_de_securie_du_navire.errors && (pv_de_visite_de_securie_du_navire.dirty || pv_de_visite_de_securie_du_navire.touched)) || showErrors">
+                    <div *ngIf="pv_de_visite_de_securie_du_navire.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="">choisir les engin que vous utilisez pour faire les activiters de péche: </label>
+                <label>
+                    <input type="checkbox" [(ngModel)]="engins_a_utiliser.canne_a_peche" name="canne_a_peche">
+                    Canne à pèche
+                </label>
+                <label>
+                    <input type="checkbox" [(ngModel)]="engins_a_utiliser.moulinet" name="moulinet">
+                    Moulinet
+                </label>
+                <label>
+                    <input type="checkbox" [(ngModel)]="engins_a_utiliser.filet_de_peche" name="filet_de_peche">
+                    Filet de pêche
+                </label>
+                <label>
+                    <input type="checkbox" [(ngModel)]="engins_a_utiliser.nylon_de_peche" name="nylon_de_peche">
+                    Nylon de pêche
+                </label>
+                <label>
+                    <input type="checkbox" [(ngModel)]="engins_a_utiliser.appat" name="appat">
+                    Appât
+                </label>
+            </div>
+
+            <div class="input-block">
+                <label for="">choisir les engin que vous utilisez pour faire les activiters de péche: </label>
+                <label>
+                    <input type="checkbox" [(ngModel)]="equipements_de_communication.vhf" name="vhf">
+                    VHF
+                </label>
+                <label>
+                    <input type="checkbox" [(ngModel)]="equipements_de_communication.gps" name="gps">
+                    GPS
+                </label>
+                <label>
+                    <input type="checkbox" [(ngModel)]="equipements_de_communication.others" name="autres">
+                    Autres
+                </label>
+            </div>
+            
+              
+        </div>
+
+
+        
+        <div class="form-buttons">
+            <button class="action-btn" type="submit">Envoyer le document</button>
+        </div>
+    </form>
+</div>

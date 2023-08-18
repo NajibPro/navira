@@ -13,6 +13,7 @@ import { ProceduresComponent } from './procedures/procedures.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeNavComponent } from './home-nav/home-nav.component';
 import { ProgressComponent } from './progress/progress.component';
+import { Procedure1Component } from './procedure1/procedure1.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProgressComponent } from './progress/progress.component';
     ProceduresComponent,
     HomeNavComponent,
     ProgressComponent,
+    Procedure1Component,
   ],
   imports: [
     BrowserModule,
