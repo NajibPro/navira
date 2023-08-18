@@ -34,6 +34,7 @@ body {
 app-landing,
 app-signup,
 app-login,
+app-procedure1,
 router-outlet{
     display: flex;
     justify-content: center;
@@ -41,7 +42,8 @@ router-outlet{
 }
 
 app-signup,
-app-login{
+app-login,
+app-procedure1{
     margin-top: 70px;
     margin-bottom: 36px;
 }
@@ -51,4 +53,182 @@ app-login{
     font-size: 11px;
     font-weight: 580;
     flex-direction: column;
+}
+
+.main{
+    flex-direction: column;
+    align-items: center;
+    width: min(90%, 1000px);
+    background-color: white;
+    padding: 16px 31px 70px 31px;
+    border-radius: 30px;
+    gap: 40px;
+}
+
+.alert{
+    width: 100%;
+    flex-direction: column;
+}
+
+.main-message{
+    color: var(--primary-color);
+    font-size: 32px;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+}
+
+.main-inputs-buttons{
+    display: flex;
+    width: min(704px, 90%);
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    overflow: visible;
+}
+
+.form-inputs{
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 15px;
+}
+
+
+input,
+select{
+    width: 100%;
+    border: solid 2.5px #407BFF;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 18px;
+}
+
+input:focus,
+select:focus{
+    outline: none;
+}
+
+.input-block-sm,
+.input-block{
+    flex-direction: column;
+    gap: 10px;
+    width: 48%;
+}
+
+.input-block{
+    width: 100%;
+}
+
+.form-buttons{
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    overflow: visible;
+}
+
+.action-btn{
+    background-color: #407BFF;
+    color: white;
+    padding: 0.4em 3em;
+    border: none;
+    border-radius: 15px;
+    font-size: 24px;
+    width: fit-content;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-weight: 600;
+}
+
+.action-btn:hover{
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+label{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 6%;
+}
+
+input[type="checkbox"] {
+    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 700px){
+    .input-block-sm{
+        width: 100%;
+    }
+
+    .main-message{
+        text-align: center;
+        justify-content: center;
+    }
+
+    input,
+    select{
+        width: 100%;
+    }
+
+    .login-instead{
+        font-size: 12px;
+    }
+
+    .main{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .action-btn{
+        font-size: 20px;
+        border-radius: 10px;
+    }
+
+    .main-inputs-buttons{
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 350px){
+    input[type='text'],
+    input[type='date']
+    select{
+        width: 100%;
+        aspect-ratio: 284/53;
+    }
+
+    select {
+        height: 0;
+        padding-top: 8.5%; /* Adjust the padding-top to achieve the desired aspect ratio */
+        padding-bottom: 8.5%; /* Adjust the padding-bottom to achieve the desired aspect ratio */
+      }
+
+    label{
+        font-size: 1em;
+    }
+
+    .main{
+        border-radius: 10px;
+        padding-bottom: 20px;
+        gap: 20px;
+    }
+
+    .main-message{
+        font-size: 24px;
+    }
+
+    .action-btn{
+        font-size: 18px;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .login-instead{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
 }

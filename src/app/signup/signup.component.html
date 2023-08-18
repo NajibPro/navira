@@ -1,6 +1,6 @@
-<div class="signup">
-    <div class="signup-message">Créer un compte !</div>
-    <form #signUpForm="ngForm" (ngSubmit)="onSubmit()" class="signup-inputs-buttons">
+<div class="main">
+    <div class="main-message">Créer un compte !</div>
+    <form #signUpForm="ngForm" (ngSubmit)="onSubmit()" class="main-inputs-buttons">
         <div *ngIf="backendErrors" class="alert alert-danger">
             <strong>Error:</strong>
             <ul>
@@ -14,7 +14,7 @@
             <div class="person-physique" [ngClass]="isPersonPhysique ? 'selected-p' : 'not-selected-p'" (click)="switchPersonPhysique()">Personne Physique</div>
         </div>
 
-        <div class="signup-inputs">
+        <div class="form-inputs">
             <div class="input-block-sm">
                 <label for="fname">Nom</label>
                 <input #fname="ngModel" type="text" name="fname" id="fname" class="fname"
@@ -181,8 +181,8 @@
             </div>
         </div>
         
-        <div class="signup-buttons">
-            <button class="signup-btn" type="submit">Créer un compte</button>
+        <div class="form-buttons">
+            <button class="action-btn" type="submit">Créer un compte</button>
             <div class="login-instead">Vous avez déjà un compte ? <a [routerLink]="login">Connectez-vous</a></div>
         </div>
     </form>

@@ -15,7 +15,7 @@ export class AuthService {
 
   login(username: string, password: string) {
     const body = { username, password };
-    return this.http.post('http://127.0.0.1:8000/auth/login', body);
+    return this.http.post('http://127.0.0.1:8000/users/login', body);
   }
 
   signup(moarale: boolean, last_name: string, first_name: string, bday: Date, wilaya: string, CNN: string, phone: string, 
@@ -29,7 +29,7 @@ export class AuthService {
       let birthdate = datePipe.transform(bday, 'yyyy-MM-dd')
       const body = {moarale ,last_name, first_name, birthdate, wilaya, CNN, phone, username, company_name, email, password, password_confirmation};
       console.log(body);
-      return this.http.post('http://127.0.0.1:8000/auth/register', body);
+      return this.http.post('http://127.0.0.1:8000/users/register', body);
   }
 
   logout(){

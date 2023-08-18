@@ -53,10 +53,12 @@ export class LoginComponent implements OnInit {
     }
     const { userName, password } = this.formData;
     this.authService.login(userName, password).subscribe(
-      (response) => {
+      (response: any) => {
         this.backendErrors = null;
         this.authService.isLoggedInSubject.next(true)
-        console.log("the response: ", response);
+        const token = response.token;
+        localStorage.setItem('token', token);
+        console.log("the response: ", response.token);
         this.router.navigate([this.procedures]);
       },
       (error) => {

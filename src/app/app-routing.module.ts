@@ -4,16 +4,18 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProcedureTypeComponent } from './procedure-type/procedure-type.component';
-import { AuthGuardService } from './services/auth-guard.service';
-import { AuthrevGardService } from './services/authrev-gard.service';
 import { ProgressComponent } from './progress/progress.component';
+import { Procedure1Component } from './procedure1/procedure1.component';
+import { authGuard } from './guards/auth.guard';
+import { authrevGard } from './guards/authrev.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuardService]},
-  { path: 'signup', component: SignupComponent, canActivate: [AuthGuardService]},
-  { path: '', component: LandingComponent},
-  { path: 'procedures', component: ProcedureTypeComponent, canActivate: [AuthrevGardService]},
-  { path: 'progress', component: ProgressComponent, canActivate: [AuthrevGardService]}
+  { path: 'login', component: LoginComponent, canActivate: [authGuard]},
+  { path: 'signup', component: SignupComponent, canActivate: [authGuard]},
+  { path: '', component: LandingComponent, canActivate: [authGuard]},
+  { path: 'procedures', component: ProcedureTypeComponent, canActivate: [authrevGard]},
+  { path: 'progress', component: ProgressComponent, canActivate: [authrevGard]},
+  { path: 'procedure1', component: Procedure1Component, canActivate: [authrevGard]}
 ];
 
 @NgModule({

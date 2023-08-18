@@ -1,40 +1,3 @@
-.signup{
-    flex-direction: column;
-    align-items: center;
-    width: min(90%, 1000px);
-    background-color: white;
-    padding: 16px 31px 70px 31px;
-    border-radius: 30px;
-    gap: 40px;
-}
-
-.alert{
-    width: 100%;
-}
-
-.signup-message{
-    color: var(--primary-color);
-    font-size: 32px;
-    font-weight: bold;
-    width: 100%;
-    text-align: left;
-}
-
-.signup-inputs-buttons{
-    display: flex;
-    width: min(704px, 90%);
-    align-items: center;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.signup-inputs{
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    row-gap: 15px;
-}
-
 .person-type{
     width: 100%;
     justify-content: center;
@@ -69,70 +32,7 @@
     transition: color 0.1s linear, background-color 0.1s linear;
 }
 
-
-input,
-select{
-    width: 100%;
-    border: solid 2.5px #407BFF;
-    border-radius: 10px;
-    padding: 12px;
-    font-size: 18px;
-}
-
-input:focus,
-select:focus{
-    outline: none;
-}
-
-
-
-select {
-    -webkit-appearance: none; /* Remove default arrow */
-    -moz-appearance: none;
-    appearance: none;
-    padding-right: 20px; /* Add space for arrow icon */
-    background: url("../../assets/imgs/arrowdown.svg") no-repeat right 10px center; /* Replace arrow.png with your custom arrow image */
-    padding-right: 10px;
-  }
-
-.input-block-sm,
-.input-block{
-    flex-direction: column;
-    gap: 10px;
-    width: 48%;
-}
-
-.input-block{
-    width: 100%;
-}
-
-.signup-buttons{
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.signup-btn{
-    background-color: #407BFF;
-    color: white;
-    padding: 0.5em 3em;
-    border: none;
-    border-radius: 15px;
-    font-size: 24px;
-    width: fit-content;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    font-weight: 600;
-}
-
-.signup-btn:hover{
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
-}
-
 @media screen and (max-width: 700px){
-    .input-block-sm{
-        width: 100%;
-    }
 
     .person-moral,
     .person-physique{
