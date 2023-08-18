@@ -8,7 +8,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const token = localStorage.getItem('token')
+    this.isLoggedInSubject.next(!!token);
+   }
   
   isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
