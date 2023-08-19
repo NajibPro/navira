@@ -42,10 +42,13 @@ router-outlet{
 }
 
 app-signup,
-app-login,
-app-procedure1{
+app-login{
     margin-top: 70px;
     margin-bottom: 36px;
+}
+
+app-procedure1{
+    margin-top: 100px;
 }
 
 .input-error{

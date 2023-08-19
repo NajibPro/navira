@@ -15,10 +15,15 @@
     padding: 0.9em;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     background-color: var(--primary-color);
-    width: min(1280px, 90%);
+    width: 100%;
     color: white;
     font-size: clamp(14px, 2.5vw, 18px);
     overflow: auto;
+}
+
+a{
+    width: min(1280px, 90%);
+    overflow: visible;
 }
 
 .procedure:hover{
