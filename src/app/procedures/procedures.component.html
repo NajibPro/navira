@@ -1,8 +1,8 @@
 <div class="procedures">
     <div class="procedures-list" *ngIf="proceduresType">
         <div class="procedures-list-title">La list des Procedures</div>
-        <ng-container *ngFor="let procedure of proceduresList">
-            <div class="procedure" *ngIf="procedure.type === proceduresType">{{ procedure.name }}</div>
+        <ng-container *ngFor="let procedure of proceduresList; let i = index">
+            <a [routerLink]="'/procedure' + (i+1)" *ngIf="procedure.type === proceduresType"><div class="procedure">{{ procedure.name }}</div></a>
         </ng-container>
     </div>
 </div>

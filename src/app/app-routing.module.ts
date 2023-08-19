@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: '', component: LandingComponent, canActivate: [authGuard]},
   { path: 'procedures', component: ProcedureTypeComponent, canActivate: [authrevGard]},
   { path: 'progress', component: ProgressComponent, canActivate: [authrevGard]},
-  { path: 'procedure1', component: Procedure1Component, canActivate: [authrevGard]}
+  { path: 'procedure1', component: Procedure1Component, canActivate: [authrevGard]},
 ];
 
 @NgModule({

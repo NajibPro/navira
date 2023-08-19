@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeNavComponent } from './home-nav/home-nav.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Procedure1Component } from './procedure1/procedure1.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { Procedure1Component } from './procedure1/procedure1.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule
   ],
   providers: [],
