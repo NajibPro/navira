@@ -1,0 +1,123 @@
+<div class="main">
+    <div class="main-message">Créer un compte !</div>
+    <form #signUpFormDPAW="ngForm" (ngSubmit)="onSubmit()" class="main-inputs-buttons">
+        <div *ngIf="backendErrors" class="alert alert-danger">
+            <strong>Error:</strong>
+            <ul>
+              <li *ngFor="let errorKey of backendErrorKeys">
+                {{ backendErrors[errorKey][0] }}
+              </li>
+            </ul>
+        </div>
+
+        <div class="form-inputs">
+            <div class="input-block-sm">
+                <label for="fname">Nom</label>
+                <input #fname="ngModel" type="text" name="fname" id="fname" class="fname"
+                 [(ngModel)] = "formData.fname"
+                 (input)="inputFunctions.detectErrors($event.target, fname.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, fname.errors)"
+                 (change)="inputFunctions.commitErrors($event.target, fname.errors)" required>
+
+                 <div class="input-error" *ngIf="(fname.errors && (fname.dirty || fname.touched)) || showErrors">
+                    <div *ngIf="fname.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block-sm">
+                <label for="lname">Prénom</label>
+                <input #lname="ngModel" type="text" name="lname" id="lname" class="lname" 
+                [(ngModel)] = "formData.lname" 
+                (input)="inputFunctions.detectErrors($event.target, lname.errors)"
+                (click)="inputFunctions.commitErrors($event.target, lname.errors)"
+                (change)="inputFunctions.commitErrors($event.target, lname.errors)" required>
+
+                <div class="input-error" *ngIf="(lname.errors && (lname.dirty || lname.touched)) || showErrors">
+                    <div *ngIf="lname.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block-sm">
+                <label for="Wilaya">Wilaya</label>
+                <select #wilaya="ngModel" name="Wilaya" id="Wilaya" class="Wilaya"
+                 [(ngModel)] = "formData.wilaya"
+                 (input)="inputFunctions.detectErrors($event.target, wilaya.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, wilaya.errors)"
+                 (change)="inputFunctions.commitErrors($event.target, wilaya.errors)" 
+                required>
+                    <option value="" disabled selected hidden>Choisissez ton wilaya</option>
+                    <option *ngFor="let Wilaya of wilayat" [value]="Wilaya">{{Wilaya}}</option>
+                </select>
+
+                <div class="input-error" *ngIf="wilaya.errors && (wilaya.dirty || wilaya.touched) || showErrors">
+                    <div *ngIf="wilaya.errors?.['required']">Ce champ est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block-sm">
+                <label for="username">Nom d'utilisateur</label>
+                <input #userName="ngModel" type="text" name="username" id="username" class="username"
+                 [(ngModel)] = "formData.userName" 
+                 (input)="inputFunctions.detectErrors($event.target, userName.errors || !userNameNotUsed())"
+                 (click)="inputFunctions.commitErrors($event.target, userName.errors || !userNameNotUsed())"
+                (change)="inputFunctions.commitErrors($event.target, userName.errors || !userNameNotUsed())" required>
+
+                <div class="input-error" *ngIf="((userName.errors || userNameNotUsed()) && (userName.dirty || userName.touched)) || showErrors">
+                    <div *ngIf="userName.errors?.['required']">Ce champ est obligatoire.</div>
+                    <div *ngIf="!userNameNotUsed()">Ce mot d'utilisateur est déjà utiliser.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="email">Email</label>
+                <input #email="ngModel" type="text" name="email" id="email" class="email"
+                 [(ngModel)] = "formData.email" 
+                 pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                 (input)="inputFunctions.detectErrors($event.target, email.errors)"
+                 (click)="inputFunctions.commitErrors($event.target, email.errors)"
+                (change)="inputFunctions.commitErrors($event.target, email.errors)" required>
+
+                <div class="input-error" *ngIf="(email.errors && (email.dirty || email.touched)) || showErrors">
+                    <div *ngIf="email.errors?.['required']">Ce champ est obligatoire.</div>
+                    <div *ngIf="email.errors?.['pattern']">L'email est invalid.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="password">Mot de pass</label>
+                <input #password="ngModel" type="password" name="password" id="password" class="password" 
+                [(ngModel)] = "formData.password"
+                pattern="^.{8,}$"
+                (input)="inputFunctions.detectErrors($event.target, password.errors)"
+                (click)="inputFunctions.commitErrors($event.target, password.errors)"
+                (change)="inputFunctions.commitErrors($event.target, password.errors)" required>
+
+                <div class="input-error" *ngIf="(password.errors && (password.dirty || password.touched)) || showErrors">
+                    <div *ngIf="password.errors?.['pattern']">Le mot de passe doit contenir au moins 8 caractères.</div>
+                    <div *ngIf="password.errors?.['required']">Le mot de passe est obligatoire.</div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <label for="cpassword">Confirmer le mot de pass</label>
+                <input #cpassword="ngModel" type="password" name="cpassword" id="cpassword" class="cpassword" 
+                [(ngModel)] = "formData.cpassword"
+                pattern="^.{8,}$"
+                (input)="inputFunctions.detectErrors($event.target, cpassword.errors || !isPasswordMatch())"
+                (click)="inputFunctions.commitErrors($event.target, cpassword.errors || !isPasswordMatch())"
+                (change)="inputFunctions.commitErrors($event.target, cpassword.errors || !isPasswordMatch())" required>
+
+                <div class="input-error" *ngIf="((cpassword.errors || !isPasswordMatch()) && (cpassword.dirty || cpassword.touched)) || showErrors">
+                    <div *ngIf="cpassword.errors?.['pattern']">La confirmation de mot de passe doit contenir au moins 8 caractères.</div>
+                    <div *ngIf="cpassword.errors?.['required']">La confirmation de mot de passe est obligatoire.</div>
+                    <div *ngIf="!isPasswordMatch()">La confirmation ne correspond pas au mot de passe</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-buttons">
+            <button class="action-btn" type="submit">Créer un compte</button>
+            <div class="login-instead">Vous avez déjà un compte ? <a [routerLink]="login">Connectez-vous</a></div>
+        </div>
+    </form>
+</div>

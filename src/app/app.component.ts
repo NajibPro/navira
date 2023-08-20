@@ -13,9 +13,13 @@ export class AppComponent implements OnInit {
     this.authService.isLoggedIn$.subscribe((value) => {
       this.isLoggedin = value;
     });
+
+    this.authService.role$.subscribe((value) => {
+      this.role = value;
+    })
   }
 
   isLoggedin = false;
+  role = 'visitor';
   title = 'navira-app';
 }
-

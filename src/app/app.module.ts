@@ -15,6 +15,10 @@ import { HomeNavComponent } from './home-nav/home-nav.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Procedure1Component } from './procedure1/procedure1.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SignupDpawComponent } from './signup-dpaw/signup-dpaw.component';
+import { DpawNavComponent } from './dpaw-nav/dpaw-nav.component';
+import { ProceduresDpawComponent } from './procedures-dpaw/procedures-dpaw.component';
+import { DocumentComponent } from './document/document.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeNavComponent,
     ProgressComponent,
     Procedure1Component,
+    SignupDpawComponent,
+    DpawNavComponent,
+    ProceduresDpawComponent,
+    DocumentComponent,
   ],
   imports: [
     BrowserModule,

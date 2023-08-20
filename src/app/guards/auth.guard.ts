@@ -8,10 +8,23 @@ export const authGuard = () => {
     const authService = inject(AuthService)
     let isLoggedIn : boolean;
     const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
 
     if(token){
       isLoggedIn = true
-      router.navigate(['procedures']);
+      if(role){
+        if(role === 'dpaw'){
+          router.navigate(['proceduresDPAW'])
+
+        } else if(role === 'user'){
+          router.navigate(['procedures']);
+
+        } else if(role === 'admin'){
+          router.navigate(['']);
+          console.log('admin is here!!')
+          
+        }
+      }
       return !isLoggedIn;
     }
 
