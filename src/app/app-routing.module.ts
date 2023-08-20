@@ -8,6 +8,10 @@ import { ProgressComponent } from './progress/progress.component';
 import { Procedure1Component } from './procedure1/procedure1.component';
 import { authGuard } from './guards/auth.guard';
 import { authrevGard } from './guards/authrev.guard';
+import { SignupDpawComponent } from './signup-dpaw/signup-dpaw.component';
+import { ProceduresDpawComponent } from './procedures-dpaw/procedures-dpaw.component';
+import { authDPAWGuard } from './guards/authDPAW.guard';
+import { DocumentComponent } from './document/document.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [authGuard]},
@@ -16,6 +20,10 @@ const routes: Routes = [
   { path: 'procedures', component: ProcedureTypeComponent, canActivate: [authrevGard]},
   { path: 'progress', component: ProgressComponent, canActivate: [authrevGard]},
   { path: 'procedure1', component: Procedure1Component, canActivate: [authrevGard]},
+  { path: 'signupDPAW', component: SignupDpawComponent, canActivate: [authGuard]},
+  { path: 'proceduresDPAW', component: ProceduresDpawComponent, canActivate: [authDPAWGuard]},
+  { path: 'document', component: DocumentComponent, canActivate: [authDPAWGuard]},
+
 ];
 
 @NgModule({

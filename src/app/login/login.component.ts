@@ -57,6 +57,21 @@ export class LoginComponent implements OnInit {
         this.backendErrors = null;
         this.authService.isLoggedInSubject.next(true)
         const token = response.token;
+        let role: string;
+        if(response.is_administrator){
+          role = 'admin';
+        } else if(response.is_DPAW){
+          role = 'dpaw'
+        } else if(response.is_simple_user){
+          role = 'user'
+        } else {
+          console.error("couldn't identify user type so we put it as user anyway!!")
+          role = 'user'
+        }
+
+        localStorage.setItem('role', role);
+        this.authService.roleSubject.next(role);
+        
         localStorage.setItem('token', token);
         console.log("the response: ", response.token);
         this.router.navigate([this.procedures]);

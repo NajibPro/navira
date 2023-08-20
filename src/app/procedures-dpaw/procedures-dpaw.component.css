@@ -1,0 +1,145 @@
+.procedures-dpaw{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+    overflow-y: visible;
+    height: fit-content;
+}
+
+.procedures-list{
+    width: min(100%, 865px);
+    padding: 5px 20px;
+    padding-bottom: 22px;
+    flex-wrap: wrap;
+    gap: 22px;
+    justify-content: center;
+}
+
+.all-procedures-title,
+.specific-procedures-title{
+    width: 100%;
+    margin-top: min(43px, 3.35vw);
+    margin-bottom: min(23px, 1.8vw);
+    justify-content: left;
+    font-size: clamp(20px, 5vw, 32px);
+}
+
+.procedure{
+    width: 100%;
+    aspect-ratio: 825/80;
+    min-height: 66px;
+    background-color: white;
+    border-radius: min(20px, 2.28vw);
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3.51%;
+    padding-left: 3.2%;
+    gap: 3.51%;
+}
+
+.procedure-info{
+    flex-grow: 1;
+    font-size: 16px;
+    font-weight: 700;
+    justify-content: space-between;
+    padding-right: min(74px, 8.4vw);
+}
+
+.time{
+    height: 62.5%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding-right: 1.7%;
+    border-right: solid 2px #d9d9d9;
+}
+
+.time-info{
+    font-size: 10px;
+    color: #bbb;
+    overflow: hidden;
+}
+
+.time-icon{
+    background-image: url('../../assets/imgs/ptime.svg');
+    width: 25px;
+    aspect-ratio: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.action-list-icon{
+    background-image: url('../../assets/imgs/action.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 49%;
+    aspect-ratio: 8/36;
+    cursor: pointer;
+}
+
+.action{
+    width: 183px;
+    height: 29px;
+    background-color: white;
+    font-size: 14px;
+    align-items: center;
+    padding-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in;
+}
+
+.action:hover{
+    background-color: #F9F9F9;
+}
+
+.action-list{
+    position: absolute;
+    visibility: hidden;
+    transform: translate(590px, -7px);
+    box-shadow: 0 2px 8px 0 rgba(66, 66, 66, 0.2);
+}
+
+@media screen and (max-width: 865px){
+    .action-list{
+        transform: translate(calc(90vw - 195px), -7px);
+    }
+}
+
+@media screen and (max-width: 700px){
+    .procedure-info{
+        padding: 0;
+        justify-content: space-around;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .procedure-info > .info:nth-child(2){
+        position: absolute;
+        visibility: hidden;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .info{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 370px){
+    .procedure-info > .info:nth-child(3){
+        position: absolute;
+        visibility: hidden;
+    }
+
+    .action-list{
+        transform: translate(calc(85vw - 195px), -7px);
+    }
+}
+
+.visible{
+    visibility: visible;
+}

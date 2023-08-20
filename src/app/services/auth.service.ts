@@ -10,11 +10,21 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token')
+    const role = localStorage.getItem('role')
+
     this.isLoggedInSubject.next(!!token);
+    if(role){
+      this.roleSubject.next(role)
+    } else {
+      this.roleSubject.next('visitor')
+    }
    }
   
   isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
+
+  roleSubject: BehaviorSubject<string> = new BehaviorSubject<string>('visitor');
+  role$: Observable<string> = this.roleSubject.asObservable();
 
   login(username: string, password: string) {
     const body = { username, password };
@@ -35,7 +45,20 @@ export class AuthService {
       return this.http.post('http://127.0.0.1:8000/users/register', body);
   }
 
+  signupDPAW(last_name: string, first_name: string, wilaya: string, username: string, email: string, password: string, password_confirmation: string){
+      if (wilaya.length >= 2 && wilaya[1] !== '.') {
+        wilaya = wilaya.substring(0, 2);
+      } else {
+        wilaya = wilaya[0];
+      }
+
+      const body = {last_name, first_name, wilaya, username, email, password, password_confirmation};
+      console.log(body);
+      return this.http.post('http://127.0.0.1:8000/users/register/DPAW', body);
+  }
+
   logout(){
     this.isLoggedInSubject.next(false);
+    this.roleSubject.next('visitor')
   }
 }

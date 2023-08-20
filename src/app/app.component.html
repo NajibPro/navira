@@ -1,4 +1,4 @@
-<app-home-nav *ngIf="isLoggedin"></app-home-nav>
-<app-landing-nav *ngIf="!isLoggedin"></app-landing-nav>
+<app-home-nav *ngIf="isLoggedin && role === 'user'"></app-home-nav>
+<app-landing-nav *ngIf="!isLoggedin && role === 'visitor'"></app-landing-nav>
+<app-dpaw-nav *ngIf="isLoggedin && role === 'dpaw'"> </app-dpaw-nav>
 <router-outlet></router-outlet>
-

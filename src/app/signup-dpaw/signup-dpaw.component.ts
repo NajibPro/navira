@@ -1,22 +1,39 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { InputfunctionsService } from '../services/inputfunctions.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
-
+import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-signup-dpaw',
+  templateUrl: './signup-dpaw.component.html',
+  styleUrls: ['./signup-dpaw.component.css']
 })
-export class SignupComponent implements OnInit{
-  signup = '/signup';
+export class SignupDpawComponent {
+  constructor(public inputFunctions: InputfunctionsService, private router: Router, private http: HttpClient, private auth: AuthService){
+
+  }
+
   login = '/login';
-  procedures = '/procedures';
+  procedures = '/procedures'
+
+  formData = {
+    lname: "",
+    fname: "",
+    wilaya: "",
+    userName: "",
+    email: "",
+    password: "",
+    cpassword: "",
+  }
 
   backendErrors: any;
   backendErrorKeys: string[] = [];
+
+  @ViewChild('signUpFormDPAW') signUpFormDPAW!: NgForm;
+  @ViewChildren('inputElement') inputElements!: QueryList<ElementRef>;
+  showErrors : boolean = false;
   
   wilayat: string[] = [
     "1. Adrar",
@@ -79,46 +96,6 @@ export class SignupComponent implements OnInit{
     "58. In Guezzam",
   ];
 
-  isPersonMoral: boolean = true;
-  isPersonPhysique: boolean = false;
-
-  formData = {
-    personMoral: this.isPersonMoral,
-    lname: "",
-    fname: "",
-    cname: "",
-    bday: Date(),
-    wilaya: "",
-    cardNumber: "",
-    phone: "213",
-    userName: "",
-    email: "",
-    password: "",
-    cpassword: "",
-  }
-
-  @ViewChild('signUpForm') signUpForm!: NgForm;
-  @ViewChildren('inputElement') inputElements!: QueryList<ElementRef>;
-  showErrors : boolean = false;
-
-  constructor(private authService: AuthService, private router: Router){
-
-  }
-
-  ngOnInit(): void {
-      
-  }
-
-  detectErrors(event: any, error: any): void{
-    const clickedElement = event.target;
-    clickedElement.style.borderColor = error? "#ff0000" : "#00ff00";
-  }
-
-  commitErrors(event: any, error: any): void{
-    const clickedElement = event.target;
-    clickedElement.style.borderColor = error? "#ff0000" : "#0075FF";
-  }
-
   isPasswordMatch(): boolean {
     return this.formData.password === this.formData.cpassword;
   }
@@ -134,22 +111,17 @@ export class SignupComponent implements OnInit{
 
   onSubmit(){
 
-    if(this.signUpForm.invalid){
+    if(this.signUpFormDPAW.invalid){
       this.showErrors = true;
-      this.inputElements.forEach(input => {
-        this.commitErrors(input.nativeElement, input.nativeElement.invalid)
-      });
       return;
     }
 
-    const {personMoral ,lname, fname, bday, wilaya, cardNumber, phone, userName, cname, email, password, cpassword} =
-     this.formData;
-    this.authService.signup(personMoral ,lname, fname, new Date(this.formData.bday), wilaya, cardNumber,
-     phone, userName, cname, email, password, cpassword).subscribe(
+    const {fname, lname, wilaya, userName, email, password, cpassword} = this.formData;
+
+    this.auth.signupDPAW(lname, fname, wilaya, userName, email, password, cpassword).subscribe(
       (response) => {
         this.backendErrors = null;
-        this.authService.isLoggedInSubject.next(true)
-        this.authService.roleSubject.next('user')
+        this.auth.isLoggedInSubject.next(true)
         console.log(response)
         this.router.navigate([this.procedures])
       },
@@ -161,15 +133,7 @@ export class SignupComponent implements OnInit{
         console.error('Signup failed:', error.error.errors);
         window.scrollTo(0, 0);
       }
-     )
-  }
-  switchPersonMoral() : void{
-    this.isPersonMoral = true;
-    this.isPersonPhysique = false;
-  }
+    )
 
-  switchPersonPhysique() : void{
-    this.isPersonMoral = false;
-    this.isPersonPhysique = true;
   }
 }
