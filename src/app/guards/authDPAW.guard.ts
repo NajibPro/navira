@@ -2,7 +2,7 @@ import { inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "../services/auth.service";
 
-//this function won't let you enter when you are logged in
+//this function won't let you enter when you aren't a DPAW
 export const authDPAWGuard = () => {
     const router = inject(Router);
     const token = localStorage.getItem('token');

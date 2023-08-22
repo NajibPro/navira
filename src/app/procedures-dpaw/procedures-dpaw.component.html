@@ -1,102 +1,42 @@
 <div class="procedures-dpaw">
     <div class="procedures-list">
-        <div class="all-procedures-title">Des demande envoyer:</div>
-        <div class="procedure">
-            <div class="time">
-                <div class="time-icon"></div>
-                <div class="time-info">Il y a xxx jours</div>
-            </div>
-            <div class="procedure-info">
-                <div class="info">Procédure XX</div>
-                <div class="info">Person Physique</div>
-                <div class="info">xxxxxxxxx</div>
-            </div>
-            <div class="action-list-icon" (click)="toggleActionList(0)"></div>
-            <div class="action-list" #actionList>
-                <div class="action">Traiter ce document</div>
-            </div>
-        </div>
-
-        <div class="procedure">
-            <div class="time">
-                <div class="time-icon"></div>
-                <div class="time-info">Il y a xxx jours</div>
-            </div>
-            <div class="procedure-info">
-                <div class="info">Procédure XX</div>
-                <div class="info">Person Physique</div>
-                <div class="info">xxxxxxxxx</div>
-            </div>
-            <div class="action-list-icon" (click)="toggleActionList(1)"></div>
-            <div class="action-list" #actionList>
-                <div class="action">Traiter ce document</div>
-            </div>
-        </div>
-
-        <div class="procedure">
-            <div class="time">
-                <div class="time-icon"></div>
-                <div class="time-info">Il y a xxx jours</div>
-            </div>
-            <div class="procedure-info">
-                <div class="info">Procédure XX</div>
-                <div class="info">Person Physique</div>
-                <div class="info">xxxxxxxxx</div>
-            </div>
-            <div class="action-list-icon" (click)="toggleActionList(2)"></div>
-            <div class="action-list" #actionList>
-                <div class="action">Traiter ce document</div>
-            </div>
-        </div>
-
         <div class="specific-procedures-title">Les demande à vous de traiter:</div>
+        <ng-container *ngFor="let request of forYouRequests; let i = index">
+            <div class="procedure">
+                <div class="time">
+                    <div class="time-icon"></div>
+                    <div class="time-info">{{ calculateTimeDifference(request.duration) }}</div>
+                </div>
+                <div class="procedure-info">
+                    <div class="info">{{ updateDynamicText(request.procedureNumber) }}</div>
+                    <div class="info" [innerText]="request.personPhysique? 'Person physique' : 'Person morale'"></div>
+                    <div class="info">{{ request.cnn }}</div>
+                </div>
+                <div class="action-list-icon" (click)="handleActionListIconClick($event, i)"></div>
+                <div class="action-list" #actionList>
+                    <a [routerLink]="document" style="text-decoration: none;"><div class="action" [innerText]="request.for_you? 'Traiter ce document' : 'Voir le document'"></div></a>
+                </div>
+            </div>
+        </ng-container>
 
-        <div class="procedure">
-            <div class="time">
-                <div class="time-icon"></div>
-                <div class="time-info">Il y a xxx jours</div>
-            </div>
-            <div class="procedure-info">
-                <div class="info">Procédure XX</div>
-                <div class="info">Person Physique</div>
-                <div class="info">xxxxxxxxx</div>
-            </div>
-            <div class="action-list-icon" (click)="toggleActionList(3)"></div>
-            <div class="action-list" #actionList>
-                <div class="action">Voir le document</div>
-            </div>
-        </div>
+        <div class="all-procedures-title">Des demande envoyer:</div>
 
-        <div class="procedure">
-            <div class="time">
-                <div class="time-icon"></div>
-                <div class="time-info">Il y a xxx jours</div>
+        <ng-container *ngFor="let request of otherRequests; let i = index">
+            <div class="procedure">
+                <div class="time">
+                    <div class="time-icon"></div>
+                    <div class="time-info">{{ calculateTimeDifference(request.duration) }}</div>
+                </div>
+                <div class="procedure-info">
+                    <div class="info">{{ updateDynamicText(request.procedureNumber) }}</div>
+                    <div class="info" [innerText]="request.personPhysique? 'Person physique' : 'Person morale'"></div>
+                    <div class="info">{{ request.cnn }}</div>
+                </div>
+                <div class="action-list-icon" (click)="handleActionListIconClick($event, i + forYouRequests.length)"></div>
+                <div class="action-list" #actionList>
+                    <a [routerLink]="document" style="text-decoration: none;"><div class="action" [innerText]="request.for_you? 'Traiter ce document' : 'Voir le document'"></div></a>
+                </div>
             </div>
-            <div class="procedure-info">
-                <div class="info">Procédure XX</div>
-                <div class="info">Person Physique</div>
-                <div class="info">xxxxxxxxx</div>
-            </div>
-            <div class="action-list-icon" (click)="toggleActionList(4)"></div>
-            <div class="action-list" #actionList>
-                <div class="action">Voir le document</div>
-            </div>
-        </div>
-
-        <div class="procedure">
-            <div class="time">
-                <div class="time-icon"></div>
-                <div class="time-info">Il y a xxx jours</div>
-            </div>
-            <div class="procedure-info">
-                <div class="info">Procédure XX</div>
-                <div class="info">Person Physique</div>
-                <div class="info">xxxxxxxxx</div>
-            </div>
-            <div class="action-list-icon" (click)="toggleActionList(5)"></div>
-            <div class="action-list" #actionList>
-                <div class="action">Voir le document</div>
-            </div>
-        </div>
+        </ng-container>
     </div>
 </div>

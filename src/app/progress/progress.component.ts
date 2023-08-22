@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { progress } from './progress';
+import { ProcedureService } from '../services/procedure.service';
 
 @Component({
   selector: 'app-progress',
@@ -7,6 +8,10 @@ import { progress } from './progress';
   styleUrls: ['./progress.component.css']
 })
 export class ProgressComponent {
+
+  constructor(private procedureService: ProcedureService){
+
+  }
   dynamicText: string = "Procedure XX:";
   isMobileView: boolean = false;
 
@@ -33,37 +38,5 @@ export class ProgressComponent {
     this.onWindowResize(null);
   }
 
-  progressList: progress[] = [
-    {
-      procedure_number: 5,
-      is_sent: true,
-      is_waiting: true,
-      is_accepted: false,
-      is_refused: false
-    },
-
-    {
-      procedure_number: 3,
-      is_sent: true,
-      is_waiting: false,
-      is_accepted: false,
-      is_refused: false
-    },
-
-    {
-      procedure_number: 1,
-      is_sent: true,
-      is_waiting: true,
-      is_accepted: true,
-      is_refused: false
-    },
-
-    {
-      procedure_number: 20,
-      is_sent: true,
-      is_waiting: true,
-      is_accepted: false,
-      is_refused: true
-    }
-  ]
+  progressList: progress[] = this.procedureService.getProgresses()
 }
