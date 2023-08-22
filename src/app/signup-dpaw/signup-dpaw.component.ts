@@ -16,7 +16,8 @@ export class SignupDpawComponent {
   }
 
   login = '/login';
-  procedures = '/procedures'
+  proceduresDPAW = '/proceduresDPAW';
+  
 
   formData = {
     lname: "",
@@ -119,11 +120,19 @@ export class SignupDpawComponent {
     const {fname, lname, wilaya, userName, email, password, cpassword} = this.formData;
 
     this.auth.signupDPAW(lname, fname, wilaya, userName, email, password, cpassword).subscribe(
-      (response) => {
+      (response: any) => {
+        const role = 'dpaw';
+        const token = response.token;
         this.backendErrors = null;
+
+        localStorage.setItem('token', token);
+        localStorage.setItem('role', role);
+
         this.auth.isLoggedInSubject.next(true)
+        this.auth.roleSubject.next(role)
         console.log(response)
-        this.router.navigate([this.procedures])
+        this.router.navigate([this.proceduresDPAW])
+        window.scrollTo(0, 0);
       },
 
       (error) => {

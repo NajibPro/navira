@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   signup = '/signup';
   login = '/login';
   procedures = '/procedures';
+  proceduresDPAW = '/proceduresDPAW'
 
   backendErrors: any;
   backendErrorKeys: string[] = [];
@@ -60,13 +61,21 @@ export class LoginComponent implements OnInit {
         let role: string;
         if(response.is_administrator){
           role = 'admin';
+          this.router.navigate(['']);
+
         } else if(response.is_DPAW){
           role = 'dpaw'
+          this.router.navigate([this.proceduresDPAW]);
+
         } else if(response.is_simple_user){
           role = 'user'
+          this.router.navigate([this.procedures]);
+
         } else {
           console.error("couldn't identify user type so we put it as user anyway!!")
           role = 'user'
+          this.router.navigate([this.procedures]);
+          
         }
 
         localStorage.setItem('role', role);
@@ -74,7 +83,7 @@ export class LoginComponent implements OnInit {
         
         localStorage.setItem('token', token);
         console.log("the response: ", response.token);
-        this.router.navigate([this.procedures]);
+        window.scrollTo(0, 0);
       },
       (error) => {
         this.backendErrors = error.error.errors;

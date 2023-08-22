@@ -30,7 +30,8 @@
     aspect-ratio: 825/80;
     min-height: 66px;
     background-color: white;
-    border-radius: min(20px, 2.28vw);
+    border-radius: min(20px, 2vw);
+    
     align-items: center;
     justify-content: space-between;
     padding: 0 3.51%;
@@ -48,6 +49,7 @@
 
 .time{
     height: 62.5%;
+    width: 82px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -85,6 +87,7 @@
     width: 183px;
     height: 29px;
     background-color: white;
+    color: black;
     font-size: 14px;
     align-items: center;
     padding-left: 10px;

@@ -146,11 +146,17 @@ export class SignupComponent implements OnInit{
      this.formData;
     this.authService.signup(personMoral ,lname, fname, new Date(this.formData.bday), wilaya, cardNumber,
      phone, userName, cname, email, password, cpassword).subscribe(
-      (response) => {
+      (response: any) => {
+        const role = 'user';
+        const token = response.token;
         this.backendErrors = null;
+
+        localStorage.setItem('token', token);
+        localStorage.setItem('role', role);
+
         this.authService.isLoggedInSubject.next(true)
-        this.authService.roleSubject.next('user')
-        console.log(response)
+        this.authService.roleSubject.next(role)
+        console.log(response.token)
         this.router.navigate([this.procedures])
       },
 

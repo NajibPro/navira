@@ -1,1 +1,142 @@
-<p>document works!</p>
+<div class="document">
+    <div class="all-info">
+        <div class="all-info-title">Les info de la demande:</div>
+
+        <div class="info-container">
+            <div class="info-container-title">Info du demandeur</div>
+            <div class="info-list">
+                <div class="info">
+                    <div class="attribute">Nom d’utilisateur:</div>
+                    <div class="value">Bentayeb</div>
+                </div>
+
+                <div class="info dark">
+                    <div class="attribute">Type:</div>
+                    <div class="value">Person Moral</div>
+                </div>
+                
+                <div class="info">
+                    <div class="attribute">Email:</div>
+                    <div class="value">najibbentayeb03@gmail.com</div>
+                </div>
+                
+                <div class="info dark">
+                    <div class="attribute">Téléphone:</div>
+                    <div class="value">213XXXXXXXXX</div>
+                </div>
+                
+                <div class="info">
+                    <div class="attribute">Nom et Prénom:</div>
+                    <div class="value">Bentayeb Mohamed Nadjib</div>
+                </div>
+                
+                <div class="info dark">
+                    <div class="attribute">NCI:</div>
+                    <div class="value">XXXXXXXXX</div>
+                </div>
+                
+                <div class="info">
+                    <div class="attribute">Date de naissance:</div>
+                    <div class="value">XX/XX/XXXX</div>
+                </div>
+                
+                <div class="info dark">
+                    <div class="attribute">Wilaya:</div>
+                    <div class="value">XX. XXXXXXXXXX</div>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <div class="info-container">
+            <div class="info-container-title">Le dossier</div>
+            <div class="warning">
+                Assurez-vous de vérifier l'exactitude de tous les documents dans le dossier,
+                même si vous avez trouvé une erreur dans l'un d'entre eux avant de tous les vérifier !!
+                </div>
+            <div class="info-list">
+                <div class="info">
+                    <div class="attribute">Procédure:</div>
+                    <div class="value">XX</div>
+                    <div class="dicision" [class.visible]="validationMode">
+                        <div class="accept"></div>
+                        <div class="refuse"></div>
+                    </div>
+                </div>
+
+                <div class="info dark">
+                    <div class="attribute">XXXX:</div>
+                    <div class="value">Person Moral</div>
+                    <div class="dicision" [class.visible]="validationMode">
+                        <div class="accept"></div>
+                        <div class="refuse"></div>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <div class="attribute">XXXXXX:</div>
+                    <div class="value">najibbentayeb03@gmail.com</div>
+                    <div class="dicision" [class.visible]="validationMode">
+                        <div class="accept"></div>
+                        <div class="refuse"></div>
+                    </div>
+                </div>
+                
+                <div class="info dark">
+                    <div class="attribute">XXXXXXX:</div>
+                    <div class="value"><a href="#">Voir le fichier</a></div>
+                    <div class="dicision" [class.visible]="validationMode">
+                        <div class="accept"></div>
+                        <div class="refuse"></div>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <div class="attribute">XXXXXX:</div>
+                    <div class="value"><a href="#">Voir le fichier</a></div>
+                    <div class="dicision" [class.visible]="validationMode">
+                        <div class="accept"></div>
+                        <div class="refuse"></div>
+                    </div>
+                </div>
+                
+                <div class="info dark">
+                    <div class="attribute">NCI:</div>
+                    <div class="value">XXXXXXXXX</div>
+                    <div class="dicision" [class.visible]="validationMode">
+                        <div class="accept"></div>
+                        <div class="refuse"></div>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <div class="attribute">Date de naissance:</div>
+                    <div class="value">XX/XX/XXXX</div>
+                    <div class="dicision" [class.visible]="validationMode">
+                        <div class="accept"></div>
+                        <div class="refuse"></div>
+                    </div>
+                </div>
+                
+                <div class="info dark">
+                    <div class="attribute">Wilaya:</div>
+                    <div class="value">XX. XXXXXXXXXX</div>
+                    <div class="dicision" [class.visible]="validationMode">
+                        <div class="accept"></div>
+                        <div class="refuse"></div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="buttons">
+                <button class="finish" [class.visible]="validationMode">Terminée</button>
+                <button class="start" [class.visible]="!validationMode" (click)="startValidationMode()">Valider le dossier</button>
+                <button class="save" [class.visible]="validationMode">Sauvegarder</button>
+                <button class="cancel" [class.visible]="validationMode" (click)="finishValidationMode()">Annuler</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
