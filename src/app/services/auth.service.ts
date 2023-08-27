@@ -59,6 +59,6 @@ export class AuthService {
 
   logout(){
     this.isLoggedInSubject.next(false);
-    this.roleSubject.next('visitor')
+    localStorage.clear();
   }
 }

@@ -1,0 +1,135 @@
+<div class="profile-account">
+    <div class="main">
+        <form #updateProfileForm="ngForm" (ngSubmit)="onSubmit()" class="main-inputs-buttons">
+            <div class="form-inputs">
+                <div class="input-block">
+                    <label for="photo" class="file-label">
+                        <div class="file-label-icon"></div>
+                        Changer la photo d’identité
+                    </label>
+                    <input #photo="ngModel" type="file" name="photo" id="photo" class="photo"
+                     [(ngModel)] = "formData.photo" required>
+        
+                     <div class="input-error" *ngIf="(photo.errors && (photo.dirty || photo.touched)) || showErrors">
+                        <div *ngIf="photo.errors?.['required']">Ce champ est obligatoire.</div>
+                    </div>
+                </div>
+            </div>
+            <input type="file" id="fileInput" style="display: none;">
+            <div class="form-inputs">
+                <div class="input-block-sm">
+                    <label for="fname">Nom</label>
+                    <input #fname="ngModel" type="text" name="fname" id="fname" class="fname"
+                     [(ngModel)] = "formData.fname"
+                     [placeholder]="oldData.fname"
+                     (input)="inputFunctions.detectErrors($event, fname.errors)"
+                     (click)="inputFunctions.commitErrors($event, fname.errors)"
+                     (change)="inputFunctions.commitErrors($event, fname.errors)" required>
+        
+                     <div class="input-error" *ngIf="(fname.errors && (fname.dirty || fname.touched)) || showErrors">
+                        <div *ngIf="fname.errors?.['required']">Ce champ est obligatoire.</div>
+                    </div>
+                </div>
+        
+                <div class="input-block-sm">
+                    <label for="lname">Prénom</label>
+                    <input #lname="ngModel" type="text" name="lname" id="lname" class="lname" 
+                    [(ngModel)] = "formData.lname" 
+                    [placeholder]="oldData.lname"
+                    (input)="inputFunctions.detectErrors($event, lname.errors)"
+                    (click)="inputFunctions.commitErrors($event, lname.errors)"
+                    (change)="inputFunctions.commitErrors($event, lname.errors)" required>
+        
+                    <div class="input-error" *ngIf="(lname.errors && (lname.dirty || lname.touched)) || showErrors">
+                        <div *ngIf="lname.errors?.['required']">Ce champ est obligatoire.</div>
+                    </div>
+                </div>
+        
+                <div class="input-block-sm">
+                    <label for="bday">Date de naissance</label>
+                    <input #bday="ngModel" type="date" name="bday" id="bday" class="bday" 
+                    [(ngModel)] = "formData.bday" 
+                    [placeholder]="oldData.bday"
+                    (input)="inputFunctions.detectErrors($event, bday.errors)"
+                    (click)="inputFunctions.commitErrors($event, bday.errors)"
+                    (change)="inputFunctions.commitErrors($event, bday.errors)" required>
+        
+                    <div class="input-error" *ngIf="(bday.errors && (bday.dirty || bday.touched)) || showErrors">
+                        <div *ngIf="bday.errors?.['required']">Ce champ est obligatoire.</div>
+                    </div>
+                </div>
+        
+                <div class="input-block-sm">
+                    <label for="Wilaya">Wilaya</label>
+                    <select #wilaya="ngModel" name="Wilaya" id="Wilaya" class="Wilaya"
+                     [(ngModel)] = "formData.wilaya"
+                     (input)="inputFunctions.detectErrors($event, wilaya.errors)"
+                     (click)="inputFunctions.commitErrors($event, wilaya.errors)"
+                     (change)="inputFunctions.commitErrors($event, wilaya.errors)" 
+                    required>
+                        <option value="" disabled selected hidden>{{oldData.wilaya}}</option>
+                        <option *ngFor="let Wilaya of wilayat" [value]="Wilaya">{{Wilaya}}</option>
+                    </select>
+        
+                    <div class="input-error" *ngIf="wilaya.errors && (wilaya.dirty || wilaya.touched) || showErrors">
+                        <div *ngIf="wilaya.errors?.['required']">Ce champ est obligatoire.</div>
+                    </div>
+                </div>
+        
+                <div class="input-block">
+                    <label for="phone">Numero de téléphone</label>
+                    <input #phone="ngModel" type="text" name="phone" id="phone" class="phone" 
+                    [(ngModel)] = "formData.phone"
+                    pattern="213[0-9]{9}"
+                    [placeholder]="oldData.phone"
+                    (input)="inputFunctions.detectErrors($event, phone.errors || containsNonNumberCharacters(formData.phone))"
+                    (click)="inputFunctions.commitErrors($event, phone.errors || containsNonNumberCharacters(formData.phone))"
+                    (change)="inputFunctions.commitErrors($event, phone.errors || containsNonNumberCharacters(formData.phone))"
+                    required>
+        
+                    <div class="input-error" *ngIf="((phone.errors || !containsNonNumberCharacters(formData.phone)) && (phone.dirty || phone.touched)) || showErrors">
+                        <div *ngIf="phone.errors?.['required']">Ce champ est obligatoire.</div>
+                        <div *ngIf="phone.errors?.['pattern']">Le numéro de téléphone est invalid.</div>
+                        <div *ngIf="containsNonNumberCharacters(formData.phone)">le numéro de téléphone ne contain que du nombres.</div>
+                    </div>
+                </div>
+        
+                <div class="input-block">
+                    <label for="email">Email</label>
+                    <input #email="ngModel" type="text" name="email" id="email" class="email"
+                     [(ngModel)] = "formData.email"
+                     [placeholder]="oldData.email"
+                     pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                     (input)="inputFunctions.detectErrors($event, email.errors)"
+                     (click)="inputFunctions.commitErrors($event, email.errors)"
+                    (change)="inputFunctions.commitErrors($event, email.errors)" required>
+        
+                    <div class="input-error" *ngIf="(email.errors && (email.dirty || email.touched)) || showErrors">
+                        <div *ngIf="email.errors?.['required']">Ce champ est obligatoire.</div>
+                        <div *ngIf="email.errors?.['pattern']">L'email est invalid.</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="buttons">
+                <button class="save" type="submit">Sauvegarder</button>
+                <button class="cancel" (click)="onCancel()">Annuler</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="profile-files">
+        <div class="file-hanger">
+            <div class="file-hanger-icon install-icon"></div>
+            <div class="file-hanger-name">Le status de la societé.</div>
+        </div>
+        <div class="file-hanger">
+            <div class="file-hanger-icon add-icon"></div>
+            <div class="file-hanger-name">BLA BLA BLA.</div>
+        </div>
+        <div class="file-hanger">
+            <div class="file-hanger-icon install-icon"></div>
+            <div class="file-hanger-name">BLA BLA BLA EBTRHYT YTH.</div>
+        </div>
+    </div>
+</div>

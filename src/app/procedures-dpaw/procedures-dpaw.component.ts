@@ -29,6 +29,7 @@ export class ProceduresDpawComponent implements OnInit{
   
   actionList: NodeListOf<Element> | undefined;
   index: number = 0;
+  checkWindowVisibility: boolean = false;
 
   handleActionListIconClick(event: MouseEvent, n: number): void {
     event.preventDefault();
@@ -38,7 +39,6 @@ export class ProceduresDpawComponent implements OnInit{
 
   // Toggle action list visibility
   toggleActionList(n: number): void {
-    debugger;
     this.actionList = document.querySelectorAll('.action-list');
     if(this.actionList){
       const target = this.actionList[n];
@@ -101,6 +101,14 @@ export class ProceduresDpawComponent implements OnInit{
       add_zero = "0"
     }
       return "Procédure " + add_zero + inputNumber;
+  }
+
+  activateCheckMode(){
+    this.checkWindowVisibility = true;
+  }
+
+  finishCheckMode(){
+    this.checkWindowVisibility = false
   }
 
 

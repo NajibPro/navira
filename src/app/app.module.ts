@@ -19,6 +19,12 @@ import { SignupDpawComponent } from './signup-dpaw/signup-dpaw.component';
 import { DpawNavComponent } from './dpaw-nav/dpaw-nav.component';
 import { ProceduresDpawComponent } from './procedures-dpaw/procedures-dpaw.component';
 import { DocumentComponent } from './document/document.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileSideBarComponent } from './profile-side-bar/profile-side-bar.component';
+import { ProfileAccountComponent } from './profile-account/profile-account.component';
+import { ProfileNotificationsComponent } from './profile-notifications/profile-notifications.component';
+import { ProfileHelpComponent } from './profile-help/profile-help.component';
+import { ProfileFilesComponent } from './profile-files/profile-files.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +42,12 @@ import { DocumentComponent } from './document/document.component';
     DpawNavComponent,
     ProceduresDpawComponent,
     DocumentComponent,
+    ProfileComponent,
+    ProfileSideBarComponent,
+    ProfileAccountComponent,
+    ProfileNotificationsComponent,
+    ProfileHelpComponent,
+    ProfileFilesComponent,
   ],
   imports: [
     BrowserModule,

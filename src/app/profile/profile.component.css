@@ -1,0 +1,278 @@
+/*.profile-content-title{
+    position: fixed;
+    height: 65vh;
+    width: 100%;
+    /*remember to make the height of this element according to this component not the profile-content-profile component
+    top: 25vw;
+    left: 13px;
+    gap: 17px;
+    flex-wrap: wrap;
+}
+
+.nav-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 18.33%;
+    background-color: #002D62;
+    border-radius: 0 0 20px 20px;
+    overflow: visible;
+}
+
+.profile-picture{
+    position: absolute;
+    top: 56.7%;
+    left: 85px;
+    height: 110%;
+    aspect-ratio: 1;
+    outline: 5px solid #8DC2FF;
+    border-radius: 50%;
+    background-color: #8DC2FF;
+    background-image: url('../../assets/imgs/profile-pic.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    max-height: 190px;
+    min-height: 150px;
+}
+
+app-profile-account{
+    padding-inline: 54px;
+    background-color: red;
+}
+
+.content-title{
+    font-size: 40px;
+    font-weight: bold;
+    width: 100%;
+}
+
+@media screen and (max-width: 1061px) {
+    .profile-picture{
+        top: 54px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 670px){
+    app-profile-profile-content{
+        width: 100%;
+    }
+
+    .profile-content{
+        position: fixed;
+        left: 0;
+        top: calc(100vh - 50px);
+        width: 100%;
+    }
+}
+*/
+
+.profile{
+    min-height: 100vh;
+    flex-direction: column;
+    max-width: 100%;
+    padding-bottom: 70px;
+}
+
+.nav-background{
+    width: 100%;
+    height: 18.33vh;
+    min-height: 140px;
+    max-width: 100%;
+    background-color: #002D62;
+    border-radius: 0 0 20px 20px;
+    overflow: visible;
+    margin-bottom: 5.4vh;
+}
+
+.profile-picture{
+    position: absolute;
+    height: 17.61vh;
+    left: 82px;
+    margin-top: 10.4vh;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    outline: 5px solid #8DC2FF;
+    background-color: #8DC2FF;
+    background-image: url('../../assets/imgs/profile-pic.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    max-height: 190px;
+    min-height: 150px;
+}
+
+.profile-content-title{
+    flex-wrap: wrap;
+    row-gap: 1.75vh;
+    padding-inline: 13px;
+}
+
+.profile-content{
+    width: 100%;
+}
+
+.content-title{
+    font-size: 40px;
+    font-weight: bold;
+    width: 100%;
+    padding-left: 394px;
+}
+
+app-profile-account{
+   width: min(756px, 60%);
+}
+
+app-profile-side-bar{
+    position: fixed;
+    margin-right: 52px;
+    z-index: 5;
+}
+
+.not-fixed-one{
+    position: static;
+    visibility: hidden;
+    min-width: fit-content;
+}
+
+.check-window{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%);
+    width: min(375px, 95%);
+    padding: 31px 31px 20px 31px;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    gap: 23px;
+    border-radius: 20px;
+    z-index: 5;
+    visibility: hidden;
+}
+
+.window-icon{
+    background-image: url('../../assets/imgs/bigLogoutIcon.svg');
+    width: 70px;
+    height: 70px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.check-message{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.warning-message{
+    font-size: 12px;
+    color: #545A61;
+}
+
+.buttons{
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.take-responsibility,
+.no-responsibility{
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+    border: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 7px;
+    transition: background-color 0.1s ease-out, color 0.1s ease-out;
+}
+
+.take-responsibility{
+    background-color: rgba(51, 145, 255, 0.1);
+    color: rgba(64, 123, 255, 0.7);
+}
+
+.no-responsibility{
+    background-color: #E9EBED;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.take-responsibility:hover,
+.no-responsibility:hover{
+    background-color: rgba(51, 145, 255, 0.2);
+    color: #407BFF;
+}
+
+.darkness{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: 4;
+    visibility: hidden;
+}
+
+@media screen and (max-width: 1061px) {
+    .profile-picture{
+        margin-top: 5.56vh;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .nav-background{
+        margin-bottom: max(5.35vh, 50px);
+    }
+
+    app-profile-side-bar{
+        margin-right: 31px;
+    }
+
+    .content-title{
+        padding-left: 0;
+        text-align: center;
+        justify-content: center;
+    }
+
+    app-profile-account{
+        width: max(605px, 78%);
+    }
+}
+
+@media screen and (max-width: 670px){
+    app-profile-side-bar {
+        position: fixed;
+        width: 100vw;
+        left: 0;
+        bottom: 0;
+        overflow: visible;
+    }
+
+    .content-title{
+        font-size: 32px;
+    }
+
+    .profile-content{
+        width: 100%;
+    }
+
+    .not-fixed-one{
+        position: absolute;
+    }
+
+    app-profile-account{
+        width: 100%;
+    }
+}
+
+.visible{
+    visibility: visible;
+}
+

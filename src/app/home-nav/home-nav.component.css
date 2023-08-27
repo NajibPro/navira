@@ -111,7 +111,7 @@ nav{
     background-image: url('../../assets/imgs/hamburger.svg');
 }
 
-@media screen and (max-width: 650px){
+@media screen and (max-width: 1061px){
     nav{
         padding-top: 15px;
     }

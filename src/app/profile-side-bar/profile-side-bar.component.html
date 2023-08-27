@@ -1,0 +1,26 @@
+<div class="profile-side-bar">
+    <div class="account side-bar-title" (click)="contentchanger(0)">
+        <div class="account-logo" [class.account-logo-chosen] = "profileContent[0]"></div>
+        <div class="account-title side-bar-text" [class.chosen] = "profileContent[0]">Modifier le Profile</div>
+    </div>
+
+    <div class="notifications side-bar-title" (click)="contentchanger(1)">
+        <div class="notifications-logo" [class.notifications-logo-chosen] = "profileContent[1]"></div>
+        <div class="notifications-title side-bar-text" [class.chosen] = "profileContent[1]">Notifications</div>
+    </div>
+
+    <div class="files side-bar-title" (click)="contentchanger(2)">
+        <div class="files-logo" [class.files-logo-chosen] = "profileContent[2]"></div>
+        <div class="files-title side-bar-text" [class.chosen] = "profileContent[2]">Mes fichiers</div>
+    </div>
+
+    <div class="help side-bar-title" (click)="contentchanger(3)">
+        <div class="help-logo" [class.help-logo-chosen] = "profileContent[3]"></div>
+        <div class="help-title side-bar-text" [class.chosen] = "profileContent[3]">Aide</div>
+    </div>
+
+    <div class="logout side-bar-title" (click)="ActivateLogoutCheckMode()">
+        <div class="logout-logo"></div>
+        <div class="logout-title side-bar-text">Se déconnecter</div>
+    </div>
+</div>

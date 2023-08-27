@@ -1,0 +1,28 @@
+<div class="profile">
+    <div class="darkness" [class.visible]="checkWindowVisibility"></div>
+    <div class="nav-background">
+        <div class="profile-picture"></div>
+    </div>
+    <div class="profile-content-title">
+        <div class="content-title">Modifier le Profile</div>
+        <div class="profile-content">
+            <app-profile-side-bar (logoutCheckEvent) = "receiveMessage()"></app-profile-side-bar>
+            <app-profile-side-bar class="not-fixed-one"></app-profile-side-bar>
+            <app-profile-account *ngIf="profileContent[0]"></app-profile-account>
+            <app-profile-notifications *ngIf="profileContent[1]"></app-profile-notifications>
+            <app-profile-files *ngIf="profileContent[2]"></app-profile-files>
+            <app-profile-help *ngIf="profileContent[3]"></app-profile-help>
+        </div>
+    </div>
+
+    <div class="check-window" [class.visible]="checkWindowVisibility">
+        <div class="window-icon"></div>
+        <div class="check-message">Vous étes sure que vous voulez traiter se document?</div>
+        <div class="buttons">
+            <button class="take-responsibility" (click)="logout()">Oui, je suis sure</button>
+            <button class="no-responsibility" (click)="finishCheckMode()">Non, annuler l’action</button>
+        </div>
+        
+    </div>
+    
+</div>

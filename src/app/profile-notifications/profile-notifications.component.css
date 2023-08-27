@@ -1,0 +1,85 @@
+.notifications-list{
+    width: min(100%, 600px);
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    z-index: -2;
+}
+
+.notification{
+    position: relative;
+    flex-direction: column;
+    background-color: white;
+    padding: 24px 70px 22px 25px;
+    gap: 8px;
+    border-radius: 7px;
+    z-index: 1;
+}
+
+.notification-title{
+    gap: 21px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.notification-title-icon{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.success-note > .notification-title-icon{
+    background-image: url('../../assets/imgs/success-note.svg');
+}
+
+.warning-note > .notification-title-icon{
+    background-image: url('../../assets/imgs/warning-note.svg');
+}
+
+.danger-note > .notification-title-icon{
+    background-image: url('../../assets/imgs/danger-note.svg');
+}
+
+.info-note > .notification-title-icon{
+    background-image: url('../../assets/imgs/info-note.svg');
+}
+
+
+
+.success-note > .notification-title-text{
+    color: #22bb55;
+}
+
+.warning-note > .notification-title-text{
+    color: #EE7700;
+}
+
+.danger-note > .notification-title-text{
+    color: #EE4444;
+}
+
+.info-note > .notification-title-text{
+    color: #33CCEE;
+}
+
+.remove-notification {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 31px;
+    height: 31px;
+    background-color: #fff;
+    background-image: url('../../assets/imgs/close-note.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border-radius: 7px;
+    transition: background-color 0.3s; 
+  }
+  
+  .remove-notification:hover {
+    background-color: #f0f0f5;
+  }
+  
