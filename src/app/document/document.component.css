@@ -170,7 +170,7 @@ button:hover,
     visibility: visible;
 }
 
-@media screen and (max-width: 440px){
+@media screen and (max-width: 455px){
     .buttons{
         flex-direction: column;
         align-items: center;

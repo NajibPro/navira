@@ -12,6 +12,7 @@ import { SignupDpawComponent } from './signup-dpaw/signup-dpaw.component';
 import { ProceduresDpawComponent } from './procedures-dpaw/procedures-dpaw.component';
 import { authDPAWGuard } from './guards/authDPAW.guard';
 import { DocumentComponent } from './document/document.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [authGuard]},
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'signupDPAW', component: SignupDpawComponent, canActivate: [authGuard]},
   { path: 'proceduresDPAW', component: ProceduresDpawComponent, canActivate: [authDPAWGuard]},
   { path: 'document', component: DocumentComponent, canActivate: [authDPAWGuard]},
+  { path: 'profile', component: ProfileComponent, canActivate: [authrevGard]},
 
 ];
 

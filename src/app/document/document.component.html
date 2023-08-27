@@ -51,7 +51,7 @@
 
         <div class="info-container">
             <div class="info-container-title">Le dossier</div>
-            <div class="warning">
+            <div class="warning" [class.visible]="validationMode">
                 Assurez-vous de vérifier l'exactitude de tous les documents dans le dossier,
                 même si vous avez trouvé une erreur dans l'un d'entre eux avant de tous les vérifier !!
                 </div>
@@ -135,7 +135,6 @@
                 <button class="start" [class.visible]="!validationMode" (click)="startValidationMode()">Valider le dossier</button>
                 <button class="save" [class.visible]="validationMode">Sauvegarder</button>
                 <button class="cancel" [class.visible]="validationMode" (click)="finishValidationMode()">Annuler</button>
-                
             </div>
         </div>
     </div>

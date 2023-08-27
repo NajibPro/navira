@@ -1,3 +1,7 @@
+*{
+    overflow: visible;
+}
+
 .procedures-dpaw{
     flex-direction: column;
     align-items: center;
@@ -106,6 +110,88 @@
     box-shadow: 0 2px 8px 0 rgba(66, 66, 66, 0.2);
 }
 
+.check-window{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%);
+    width: min(375px, 95%);
+    padding: 31px 31px 20px 31px;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    gap: 23px;
+    border-radius: 20px;
+    z-index: 5;
+    visibility: hidden;
+}
+
+.window-icon{
+    background-image: url('../../assets/imgs/documentsss.svg');
+    width: 70px;
+    height: 70px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.check-message{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.warning-message{
+    font-size: 12px;
+    color: #545A61;
+}
+
+.buttons{
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.take-responsibility,
+.no-responsibility{
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+    border: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 7px;
+    transition: background-color 0.1s ease-out, color 0.1s ease-out;
+}
+
+.take-responsibility{
+    background-color: rgba(51, 145, 255, 0.1);
+    color: rgba(64, 123, 255, 0.7);
+}
+
+.no-responsibility{
+    background-color: #E9EBED;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.take-responsibility:hover,
+.no-responsibility:hover{
+    background-color: rgba(51, 145, 255, 0.2);
+    color: #407BFF;
+}
+
+.darkness{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: 4;
+    visibility: hidden;
+}
+
 @media screen and (max-width: 865px){
     .action-list{
         transform: translate(calc(90vw - 195px), -7px);
@@ -140,6 +226,23 @@
 
     .action-list{
         transform: translate(calc(85vw - 195px), -7px);
+    }
+}
+
+@media screen and (max-width: 340px){
+    .check-window{
+        padding: 20px;
+    }
+
+    .warning-message{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 300px){
+    .warning-message{
+        visibility: hidden;
+        height: 0;
     }
 }
 
