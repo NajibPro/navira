@@ -1,3 +1,7 @@
+.main{
+    width: min(90%, 1000px);
+}
+
 .person-type{
     width: 100%;
     justify-content: center;
