@@ -7,42 +7,43 @@
             <div class="info-list">
                 <div class="info">
                     <div class="attribute">Nom d’utilisateur:</div>
-                    <div class="value">Bentayeb</div>
+                    <div class="value">{{ userInfo.username }}</div>
                 </div>
 
                 <div class="info dark">
                     <div class="attribute">Type:</div>
-                    <div class="value">Person Moral</div>
+                    <div class="value" *ngIf="!userInfo.physique">Person Moral</div>
+                    <div class="value" *ngIf="userInfo.physique">Person physique</div>
                 </div>
                 
                 <div class="info">
                     <div class="attribute">Email:</div>
-                    <div class="value">najibbentayeb03@gmail.com</div>
+                    <div class="value">{{ userInfo.email }}</div>
                 </div>
                 
                 <div class="info dark">
                     <div class="attribute">Téléphone:</div>
-                    <div class="value">213XXXXXXXXX</div>
+                    <div class="value">{{ userInfo.phone }}</div>
                 </div>
                 
                 <div class="info">
                     <div class="attribute">Nom et Prénom:</div>
-                    <div class="value">Bentayeb Mohamed Nadjib</div>
+                    <div class="value">{{ userInfo.first_name + " " + userInfo.last_name}}</div>
                 </div>
                 
                 <div class="info dark">
                     <div class="attribute">NCI:</div>
-                    <div class="value">XXXXXXXXX</div>
+                    <div class="value">{{ userInfo.CNN }}</div>
                 </div>
                 
                 <div class="info">
                     <div class="attribute">Date de naissance:</div>
-                    <div class="value">XX/XX/XXXX</div>
+                    <div class="value">{{ userInfo.birthdate }}</div>
                 </div>
                 
                 <div class="info dark">
                     <div class="attribute">Wilaya:</div>
-                    <div class="value">XX. XXXXXXXXXX</div>
+                    <div class="value">{{ userInfo.wilaya }}</div>
                 </div>
                 
             </div>
@@ -61,8 +62,13 @@
                     <div class="value">{{document.procedureNum}}</div>
                 </div>
 
-                <ng-container *ngFor="let info of document.info; let e = even">
+                <ng-container *ngFor="let info of document.info; let e = even; let i = index">
                     <div class="info" [class.dark]="e">
+                        <ng-container *ngIf="info.isCorrect !== null">
+                            <div class="correct-class" *ngIf="validationMode && info.isCorrect"></div>
+                            <div class="wrong-class" *ngIf="validationMode && !info.isCorrect"></div>
+                        </ng-container>
+                        
                         <div class="attribute">{{info.name}}:</div>
                         <ng-container [ngSwitch]="info.type">
                             <div *ngSwitchCase="'text'" class="value">{{ info.data }}</div>
@@ -75,8 +81,11 @@
                         </ng-container>
                         
                         <div class="dicision" [class.visible]="validationMode">
-                            <div class="accept"></div>
-                            <div class="refuse"></div>
+                            <input type="radio" [id]="'accept-' + i" [checked]="info.isCorrect" (click)="validateInfo($event, i, true)">
+                            <label [for]="'accept-' + i" class="accept"></label>
+
+                            <input type="radio" [id]="'refuse-' + i" [checked]="!info.isCorrect" (click)="validateInfo($event, i, false)">
+                            <label [for]="'refuse-' + i" class="refuse"></label>
                         </div>
                     </div>
                 </ng-container>
@@ -86,8 +95,8 @@
             <div class="buttons">
                 <button class="finish" [class.visible]="validationMode">Terminée</button>
                 <button class="start" [class.visible]="!validationMode" (click)="startValidationMode()">Valider le dossier</button>
-                <button class="save" [class.visible]="validationMode">Sauvegarder</button>
-                <button class="cancel" [class.visible]="validationMode" (click)="finishValidationMode()">Annuler</button>
+                <button class="save" [class.visible]="validationMode" (click)="finishValidationMode(); saveChanges()">Sauvegarder</button>
+                <button class="cancel" [class.visible]="validationMode" (click)="finishValidationMode(); cancelChanges()">Annuler</button>
             </div>
         </div>
     </div>

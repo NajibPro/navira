@@ -1,0 +1,22 @@
+<div class="profile">
+    <div class="darkness" [class.visible]="checkWindowVisibility"></div>
+    <div class="nav-background">
+    </div>
+    <div class="profile-content-title">
+        <div class="content-title">Voir ton profile</div>
+        <div class="profile-content">
+            <app-profile-dpaw-account (logoutCheckEvent)="receiveMessage()"></app-profile-dpaw-account>
+        </div>
+    </div>
+
+    <div class="check-window" [class.visible]="checkWindowVisibility">
+        <div class="window-icon"></div>
+        <div class="check-message">Vous étes sure que vous voulez déconnecter?</div>
+        <div class="buttons">
+            <button class="take-responsibility" (click)="logout()">Oui, je suis sure</button>
+            <button class="no-responsibility" (click)="finishCheckMode()">Non, annuler l’action</button>
+        </div>
+        
+    </div>
+    
+</div>

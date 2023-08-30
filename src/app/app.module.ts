@@ -26,6 +26,8 @@ import { ProfileNotificationsComponent } from './profile-notifications/profile-n
 import { ProfileHelpComponent } from './profile-help/profile-help.component';
 import { ProfileFilesComponent } from './profile-files/profile-files.component';
 import { ImageViewerComponent } from './image-viewer/image-viewer.component';
+import { ProfileDpawComponent } from './profile-dpaw/profile-dpaw.component';
+import { ProfileDpawAccountComponent } from './profile-dpaw-account/profile-dpaw-account.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { ImageViewerComponent } from './image-viewer/image-viewer.component';
     ProfileHelpComponent,
     ProfileFilesComponent,
     ImageViewerComponent,
+    ProfileDpawComponent,
+    ProfileDpawAccountComponent,
   ],
   imports: [
     BrowserModule,

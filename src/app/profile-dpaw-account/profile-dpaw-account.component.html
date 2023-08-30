@@ -1,0 +1,56 @@
+<div class="profile-account">
+    <div class="main">
+        <form class="main-inputs-buttons">
+            <div class="form-inputs">
+                <div class="input-block-sm">
+                    <label for="fname">Nom</label>
+                    <input readonly type="text" name="fname" id="fname" class="fname"
+                     [placeholder]="oldData.fname">
+        
+                     
+                </div>
+        
+                <div class="input-block-sm">
+                    <label for="lname">Prénom</label>
+                    <input readonly type="text" name="lname" id="lname" class="lname" 
+                    [placeholder]="oldData.lname">
+        
+                    
+                </div>
+        
+                <div class="input-block-sm">
+                    <label for="bday">Date de naissance</label>
+                    <input readonly type="text" name="bday" id="bday" class="bday" 
+                    [placeholder]="oldData.bday">
+        
+                    
+                </div>
+        
+                <div class="input-block-sm">
+                    <label for="Wilaya">Wilaya</label>
+                    <input readonly name="Wilaya" id="Wilaya" class="Wilaya"
+                    [placeholder]="oldData.wilaya">
+                </div>
+        
+                <div class="input-block">
+                    <label for="phone">Numero de téléphone</label>
+                    <input readonly type="text" name="phone" id="phone" class="phone" 
+                    [placeholder]="oldData.phone">
+        
+                    
+                </div>
+        
+                <div class="input-block">
+                    <label for="email">Email</label>
+                    <input readonly type="text" name="email" id="email" class="email"
+                     [placeholder]="oldData.email">
+                </div>
+            </div>
+    
+            <div class="buttons">
+                <button class="cancel" (click)="ActivateLogoutCheckMode()">Logout</button>
+            </div>
+        </form>
+    </div>
+</div>
+
