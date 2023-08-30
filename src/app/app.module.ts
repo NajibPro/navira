@@ -25,6 +25,7 @@ import { ProfileAccountComponent } from './profile-account/profile-account.compo
 import { ProfileNotificationsComponent } from './profile-notifications/profile-notifications.component';
 import { ProfileHelpComponent } from './profile-help/profile-help.component';
 import { ProfileFilesComponent } from './profile-files/profile-files.component';
+import { ImageViewerComponent } from './image-viewer/image-viewer.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ProfileFilesComponent } from './profile-files/profile-files.component';
     ProfileNotificationsComponent,
     ProfileHelpComponent,
     ProfileFilesComponent,
+    ImageViewerComponent,
   ],
   imports: [
     BrowserModule,

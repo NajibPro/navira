@@ -58,75 +58,28 @@
             <div class="info-list">
                 <div class="info">
                     <div class="attribute">Procédure:</div>
-                    <div class="value">XX</div>
-                    <div class="dicision" [class.visible]="validationMode">
-                        <div class="accept"></div>
-                        <div class="refuse"></div>
-                    </div>
+                    <div class="value">{{document.procedureNum}}</div>
                 </div>
 
-                <div class="info dark">
-                    <div class="attribute">XXXX:</div>
-                    <div class="value">Person Moral</div>
-                    <div class="dicision" [class.visible]="validationMode">
-                        <div class="accept"></div>
-                        <div class="refuse"></div>
+                <ng-container *ngFor="let info of document.info; let e = even">
+                    <div class="info" [class.dark]="e">
+                        <div class="attribute">{{info.name}}:</div>
+                        <ng-container [ngSwitch]="info.type">
+                            <div *ngSwitchCase="'text'" class="value">{{ info.data }}</div>
+                            <div *ngSwitchCase="'list'" class="value">
+                                <ng-container *ngFor="let data of isArray(info.data)">
+                                    {{data}},
+                                </ng-container>
+                            </div>
+                            <div *ngSwitchCase="'file'" class="value" (click)="openImageWindow(info.data)"><a style="text-decoration: underline; cursor: pointer; color: var(--primary-color)">Voir le fichier</a></div>
+                        </ng-container>
+                        
+                        <div class="dicision" [class.visible]="validationMode">
+                            <div class="accept"></div>
+                            <div class="refuse"></div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="info">
-                    <div class="attribute">XXXXXX:</div>
-                    <div class="value">najibbentayeb03@gmail.com</div>
-                    <div class="dicision" [class.visible]="validationMode">
-                        <div class="accept"></div>
-                        <div class="refuse"></div>
-                    </div>
-                </div>
-                
-                <div class="info dark">
-                    <div class="attribute">XXXXXXX:</div>
-                    <div class="value"><a href="#">Voir le fichier</a></div>
-                    <div class="dicision" [class.visible]="validationMode">
-                        <div class="accept"></div>
-                        <div class="refuse"></div>
-                    </div>
-                </div>
-                
-                <div class="info">
-                    <div class="attribute">XXXXXX:</div>
-                    <div class="value"><a href="#">Voir le fichier</a></div>
-                    <div class="dicision" [class.visible]="validationMode">
-                        <div class="accept"></div>
-                        <div class="refuse"></div>
-                    </div>
-                </div>
-                
-                <div class="info dark">
-                    <div class="attribute">NCI:</div>
-                    <div class="value">XXXXXXXXX</div>
-                    <div class="dicision" [class.visible]="validationMode">
-                        <div class="accept"></div>
-                        <div class="refuse"></div>
-                    </div>
-                </div>
-                
-                <div class="info">
-                    <div class="attribute">Date de naissance:</div>
-                    <div class="value">XX/XX/XXXX</div>
-                    <div class="dicision" [class.visible]="validationMode">
-                        <div class="accept"></div>
-                        <div class="refuse"></div>
-                    </div>
-                </div>
-                
-                <div class="info dark">
-                    <div class="attribute">Wilaya:</div>
-                    <div class="value">XX. XXXXXXXXXX</div>
-                    <div class="dicision" [class.visible]="validationMode">
-                        <div class="accept"></div>
-                        <div class="refuse"></div>
-                    </div>
-                </div>
+                </ng-container>
                 
             </div>
 

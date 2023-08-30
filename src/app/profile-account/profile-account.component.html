@@ -8,12 +8,13 @@
                         Changer la photo d’identité
                     </label>
                     <input #photo="ngModel" type="file" name="photo" id="photo" class="photo"
-                     [(ngModel)] = "formData.photo" required>
+                     [(ngModel)] = "profileFiles.profilePicUrl"
+                     (change)="handleProfilePicSelection($event)">
         
                      <div class="input-error" *ngIf="(photo.errors && (photo.dirty || photo.touched)) || showErrors">
-                        <div *ngIf="photo.errors?.['required']">Ce champ est obligatoire.</div>
                     </div>
                 </div>
+
             </div>
             <input type="file" id="fileInput" style="display: none;">
             <div class="form-inputs">
@@ -22,12 +23,11 @@
                     <input #fname="ngModel" type="text" name="fname" id="fname" class="fname"
                      [(ngModel)] = "formData.fname"
                      [placeholder]="oldData.fname"
-                     (input)="inputFunctions.detectErrors($event, fname.errors)"
-                     (click)="inputFunctions.commitErrors($event, fname.errors)"
-                     (change)="inputFunctions.commitErrors($event, fname.errors)" required>
+                     (input)="inputFunctions.detectErrors($event.target, fname.errors)"
+                     (click)="inputFunctions.commitErrors($event.target, fname.errors)"
+                     (change)="inputFunctions.commitErrors($event.target, fname.errors)">
         
                      <div class="input-error" *ngIf="(fname.errors && (fname.dirty || fname.touched)) || showErrors">
-                        <div *ngIf="fname.errors?.['required']">Ce champ est obligatoire.</div>
                     </div>
                 </div>
         
@@ -36,12 +36,11 @@
                     <input #lname="ngModel" type="text" name="lname" id="lname" class="lname" 
                     [(ngModel)] = "formData.lname" 
                     [placeholder]="oldData.lname"
-                    (input)="inputFunctions.detectErrors($event, lname.errors)"
-                    (click)="inputFunctions.commitErrors($event, lname.errors)"
-                    (change)="inputFunctions.commitErrors($event, lname.errors)" required>
+                    (input)="inputFunctions.detectErrors($event.target, lname.errors)"
+                    (click)="inputFunctions.commitErrors($event.target, lname.errors)"
+                    (change)="inputFunctions.commitErrors($event.target, lname.errors)">
         
                     <div class="input-error" *ngIf="(lname.errors && (lname.dirty || lname.touched)) || showErrors">
-                        <div *ngIf="lname.errors?.['required']">Ce champ est obligatoire.</div>
                     </div>
                 </div>
         
@@ -50,12 +49,11 @@
                     <input #bday="ngModel" type="date" name="bday" id="bday" class="bday" 
                     [(ngModel)] = "formData.bday" 
                     [placeholder]="oldData.bday"
-                    (input)="inputFunctions.detectErrors($event, bday.errors)"
-                    (click)="inputFunctions.commitErrors($event, bday.errors)"
-                    (change)="inputFunctions.commitErrors($event, bday.errors)" required>
+                    (input)="inputFunctions.detectErrors($event.target, bday.errors)"
+                    (click)="inputFunctions.commitErrors($event.target, bday.errors)"
+                    (change)="inputFunctions.commitErrors($event.target, bday.errors)">
         
                     <div class="input-error" *ngIf="(bday.errors && (bday.dirty || bday.touched)) || showErrors">
-                        <div *ngIf="bday.errors?.['required']">Ce champ est obligatoire.</div>
                     </div>
                 </div>
         
@@ -63,16 +61,14 @@
                     <label for="Wilaya">Wilaya</label>
                     <select #wilaya="ngModel" name="Wilaya" id="Wilaya" class="Wilaya"
                      [(ngModel)] = "formData.wilaya"
-                     (input)="inputFunctions.detectErrors($event, wilaya.errors)"
-                     (click)="inputFunctions.commitErrors($event, wilaya.errors)"
-                     (change)="inputFunctions.commitErrors($event, wilaya.errors)" 
-                    required>
+                     (input)="inputFunctions.detectErrors($event.target, wilaya.errors)"
+                     (click)="inputFunctions.commitErrors($event.target, wilaya.errors)"
+                     (change)="inputFunctions.commitErrors($event.target, wilaya.errors)">
                         <option value="" disabled selected hidden>{{oldData.wilaya}}</option>
                         <option *ngFor="let Wilaya of wilayat" [value]="Wilaya">{{Wilaya}}</option>
                     </select>
         
                     <div class="input-error" *ngIf="wilaya.errors && (wilaya.dirty || wilaya.touched) || showErrors">
-                        <div *ngIf="wilaya.errors?.['required']">Ce champ est obligatoire.</div>
                     </div>
                 </div>
         
@@ -82,15 +78,13 @@
                     [(ngModel)] = "formData.phone"
                     pattern="213[0-9]{9}"
                     [placeholder]="oldData.phone"
-                    (input)="inputFunctions.detectErrors($event, phone.errors || containsNonNumberCharacters(formData.phone))"
-                    (click)="inputFunctions.commitErrors($event, phone.errors || containsNonNumberCharacters(formData.phone))"
-                    (change)="inputFunctions.commitErrors($event, phone.errors || containsNonNumberCharacters(formData.phone))"
-                    required>
+                    (input)="inputFunctions.detectErrors($event.target, phone.errors || containsNonNumberCharacters(formData.phone))"
+                    (click)="inputFunctions.commitErrors($event.target, phone.errors || containsNonNumberCharacters(formData.phone))"
+                    (change)="inputFunctions.commitErrors($event.target, phone.errors || containsNonNumberCharacters(formData.phone))">
         
-                    <div class="input-error" *ngIf="((phone.errors || !containsNonNumberCharacters(formData.phone)) && (phone.dirty || phone.touched)) || showErrors">
-                        <div *ngIf="phone.errors?.['required']">Ce champ est obligatoire.</div>
+                    <div class="input-error" *ngIf="((phone.errors || containsNonNumberCharacters(formData.phone)) && (phone.dirty || phone.touched)) || showErrors">
                         <div *ngIf="phone.errors?.['pattern']">Le numéro de téléphone est invalid.</div>
-                        <div *ngIf="containsNonNumberCharacters(formData.phone)">le numéro de téléphone ne contain que du nombres.</div>
+                        <div *ngIf="containsNonNumberCharacters(formData.phone)">le numéro de téléphone ne contain que des nombres.</div>
                     </div>
                 </div>
         
@@ -100,13 +94,40 @@
                      [(ngModel)] = "formData.email"
                      [placeholder]="oldData.email"
                      pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                     (input)="inputFunctions.detectErrors($event, email.errors)"
-                     (click)="inputFunctions.commitErrors($event, email.errors)"
-                    (change)="inputFunctions.commitErrors($event, email.errors)" required>
+                     (input)="inputFunctions.detectErrors($event.target, email.errors)"
+                     (click)="inputFunctions.commitErrors($event.target, email.errors)"
+                    (change)="inputFunctions.commitErrors($event.target, email.errors)">
         
                     <div class="input-error" *ngIf="(email.errors && (email.dirty || email.touched)) || showErrors">
-                        <div *ngIf="email.errors?.['required']">Ce champ est obligatoire.</div>
                         <div *ngIf="email.errors?.['pattern']">L'email est invalid.</div>
+                    </div>
+                </div>
+
+                <div class="input-block">
+                    <label for="register_commerce">Numéro de registre de commerce</label>
+                    <input #register_commerce="ngModel" type="text" name="register_commerce" id="register_commerce" class="register_commerce"
+                     [(ngModel)] = "formData.register_commerce"
+                     [placeholder]="oldData.register_commerce"
+                     (input)="inputFunctions.detectErrors($event.target, register_commerce.errors || containsNonNumberCharacters(formData.register_commerce))"
+                     (click)="inputFunctions.commitErrors($event.target, register_commerce.errors || containsNonNumberCharacters(formData.register_commerce))"
+                    (change)="inputFunctions.commitErrors($event.target, register_commerce.errors || containsNonNumberCharacters(formData.register_commerce))">
+        
+                    <div class="input-error" *ngIf="((register_commerce.errors || containsNonNumberCharacters(formData.register_commerce)) && (register_commerce.dirty || register_commerce.touched)) || showErrors">
+                        <div *ngIf="containsNonNumberCharacters(formData.register_commerce)">ce numéro ne contain que des nombres.</div>
+                    </div>
+                </div>
+
+                <div class="input-block">
+                    <label for="extrait_de_naissance_number">Numéro d'extrait de naissance</label>
+                    <input #extrait_de_naissance_number="ngModel" type="text" name="extrait_de_naissance_number" id="extrait_de_naissance_number" class="extrait_de_naissance_number"
+                     [(ngModel)] = "formData.extrait_de_naissance_number"
+                     [placeholder]="oldData.extrait_de_naissance_number"
+                     (input)="inputFunctions.detectErrors($event.target, extrait_de_naissance_number.errors || containsNonNumberCharacters(formData.extrait_de_naissance_number))"
+                     (click)="inputFunctions.commitErrors($event.target, extrait_de_naissance_number.errors || containsNonNumberCharacters(formData.extrait_de_naissance_number))"
+                    (change)="inputFunctions.commitErrors($event.target, extrait_de_naissance_number.errors || containsNonNumberCharacters(formData.extrait_de_naissance_number))">
+        
+                    <div class="input-error" *ngIf="((extrait_de_naissance_number.errors || containsNonNumberCharacters(formData.extrait_de_naissance_number)) && (extrait_de_naissance_number.dirty || extrait_de_naissance_number.touched)) || showErrors">
+                        <div *ngIf="containsNonNumberCharacters(formData.extrait_de_naissance_number)">ce numéro ne contain que des nombres.</div>
                     </div>
                 </div>
             </div>
@@ -119,17 +140,21 @@
     </div>
 
     <div class="profile-files">
-        <div class="file-hanger">
-            <div class="file-hanger-icon install-icon"></div>
-            <div class="file-hanger-name">Le status de la societé.</div>
-        </div>
-        <div class="file-hanger">
+        <label for="status_societe" class="file-hanger" [class.hidden]="profileFiles.statusUrl">
             <div class="file-hanger-icon add-icon"></div>
-            <div class="file-hanger-name">BLA BLA BLA.</div>
+            <div class="file-hanger-name">Le status de la societé.</div>
+        </label>
+        <input #status_societe="ngModel" type="file" name="status_societe" id="status_societe" class="status_societe"
+          [(ngModel)] = "profileFiles.statusUrl" (change)="handleStatusSelection($event)">
+    
+        <div class="input-error" *ngIf="(photo.errors && (photo.dirty || photo.touched)) || showErrors">
         </div>
-        <div class="file-hanger">
-            <div class="file-hanger-icon install-icon"></div>
-            <div class="file-hanger-name">BLA BLA BLA EBTRHYT YTH.</div>
-        </div>
+
+        <ng-container *ngIf="profileFiles.statusUrl">
+            <div class="file-hanger" (click)="openImageWindow()">
+                <div class="file-hanger-icon install-icon"></div>
+                <div class="file-hanger-name">Le status de la societé.</div>
+            </div>
+        </ng-container>
     </div>
 </div>

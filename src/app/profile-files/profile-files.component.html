@@ -1,14 +1,10 @@
 <div class="profile-files">
-    <div class="file-hanger">
-        <div class="file-hanger-icon install-icon"></div>
-        <div class="file-hanger-name">Fichier du procedure 01: Autorisation de péche.</div>
-    </div>
-    <div class="file-hanger">
-        <div class="file-hanger-icon install-icon"></div>
-        <div class="file-hanger-name">Fichier du procedure 05: Permis de pèche au thon de la marine</div>
-    </div>
-    <div class="file-hanger">
-        <div class="file-hanger-icon install-icon"></div>
-        <div class="file-hanger-name">Fichier du procedure 08: Autorisation d’acquisition de bla bla bla bla bla bla.</div>
-    </div>
+    <ng-container *ngFor="let paper of profileFiles">
+        <div class="file-hanger" (click)="openImageWindow(paper.fileUrl)">
+            <div class="file-hanger-icon install-icon" 
+            [class.install-icon]="paper.expirationTime && currentTime > paper.expirationTime"
+            [class.update-icon]="!(paper.expirationTime && currentTime > paper.expirationTime)"></div>
+            <div class="file-hanger-name">Fichier du procedure {{paper.procedureNum}}: Autorisation de péche.</div>
+        </div>
+    </ng-container>
 </div>

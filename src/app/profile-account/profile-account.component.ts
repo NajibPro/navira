@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { InputfunctionsService } from '../services/inputfunctions.service';
 import { NgForm } from '@angular/forms';
 
@@ -12,6 +12,8 @@ export class ProfileAccountComponent {
 
   }
 
+  @Output() profilePicEvent = new EventEmitter();
+
   formData = {
     lname: "",
     fname: "",
@@ -20,6 +22,8 @@ export class ProfileAccountComponent {
     phone: "",
     userName: "",
     email: "",
+    register_commerce: "",
+    extrait_de_naissance_number: "",
     photo: "",
   }
 
@@ -31,7 +35,14 @@ export class ProfileAccountComponent {
     phone: "213562198660",
     userName: "Najib_03",
     email: "najibbentayeb03@gmail.com",
+    register_commerce: "",
+    extrait_de_naissance_number: "",
     photo: "",
+  }
+
+  profileFiles = {
+    profilePicUrl: null,
+    statusUrl: null,
   }
 
   @ViewChild('updateProfileForm') updateProfileForm!: NgForm;
@@ -39,6 +50,7 @@ export class ProfileAccountComponent {
   backendErrors: any;
   backendErrorKeys: string[] = [];
   showErrors : boolean = false;
+  imageToDisplay!: string | ArrayBuffer | null;
   
   wilayat: string[] = [
     "1. Adrar",
@@ -104,6 +116,44 @@ export class ProfileAccountComponent {
   containsNonNumberCharacters(inputString: string): boolean {
     const nonNumberRegex = /[^0-9]/;
     return nonNumberRegex.test(inputString);
+  }
+
+  handleProfilePicSelection(event: any){
+    if(event.target.files){
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (events: any) => {
+        this.profileFiles.profilePicUrl = events.target.result;
+        this.sendProfilePic()
+      }
+    }
+  }
+
+  handleStatusSelection(event: any){
+    if(event.target.files){
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (events: any) => {
+        this.profileFiles.statusUrl = events.target.result;
+        this.imageToDisplay = this.profileFiles.statusUrl;
+      }
+    }
+  }
+
+  sendProfilePic(){
+    this.profilePicEvent.emit(this.profileFiles.profilePicUrl)
+  }
+
+  openImageWindow(): void {
+    if (this.imageToDisplay) {
+      const imageWindow = window.open('', '_blank');
+      if (imageWindow) {
+        const doc = imageWindow.document;
+        doc.open();
+        doc.write(`<img src="${this.imageToDisplay}" alt="Uploaded Image">`);
+        doc.close();
+      }
+    }
   }
 
   onSubmit(){
