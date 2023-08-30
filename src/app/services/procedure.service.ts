@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { progress } from '../progress/progress';
 import { Demand } from '../procedures-dpaw/request';
+import { Dossier } from '../document/dossier';
 
 @Injectable({
   providedIn: 'root'
@@ -110,5 +111,55 @@ export class ProcedureService {
     ]
 
     return requestList;
+  }
+
+  getDocument(): Dossier{
+    let document: Dossier = {
+      procedureNum: 1,
+      info: [
+        {
+          name: 'XXXX',
+          type: "text",
+          data: 'XXXXXXXXXXXXXXX'
+        },
+
+        {
+          name: 'NCI',
+          type: "text",
+          data: '536433455353'
+        },
+
+        {
+          name: 'email',
+          type: "text",
+          data: 'najibbentayeb03@gmail.com'
+        },
+
+        {
+          name: 'Date de naissance',
+          type: "text",
+          data: 'XX/XX/XXXX'
+        },
+
+        {
+          name: 'XXXX',
+          type: "file",
+          data: '../../assets/imgs/danger-note.svg'
+        },
+
+        {
+          name: 'beautiful file',
+          type: "file",
+          data: '../../assets/imgs/danger-note.svg'
+        },
+
+        {
+          name: 'XXXX',
+          type: "list",
+          data: ['i', 'love', 'you', 'so', "much", ';)']
+        },
+      ]
+    }
+    return document
   }
 }

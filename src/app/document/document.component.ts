@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProcedureService } from '../services/procedure.service';
+import { Dossier } from './dossier';
 
 @Component({
   selector: 'app-document',
@@ -7,14 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentComponent implements OnInit{
 
-  constructor(){
+  constructor(private procedureService: ProcedureService){
 
   }
-  ngOnInit(): void {
 
+  ngOnInit(): void {
+    this.document = this.procedureService.getDocument()
+  }
+
+  isArray(variable: string | string[]): string[] {
+    if(Array.isArray(variable)){
+      return variable;
+    } else {
+      return [];
+    }
+    
   }
 
   validationMode: boolean = false;
+  document!: Dossier;
 
   startValidationMode(){
     this.validationMode = true;
@@ -22,5 +35,17 @@ export class DocumentComponent implements OnInit{
 
   finishValidationMode(){
     this.validationMode = false;
+  }
+
+  openImageWindow(imageToDisplay: string | string[] | ArrayBuffer | null): void {
+    if (imageToDisplay) {
+      const imageWindow = window.open('', '_blank');
+      if (imageWindow) {
+        const doc = imageWindow.document;
+        doc.open();
+        doc.write(`<img src="${imageToDisplay}" alt="Uploaded Image">`);
+        doc.close();
+      }
+    }
   }
 }

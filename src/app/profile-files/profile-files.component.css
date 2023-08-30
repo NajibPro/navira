@@ -35,3 +35,7 @@
 .install-icon{
     background-image: url('../../assets/imgs/file-uploaded.svg');
 }
+
+.update-icon{
+    background-image: url('../../assets/imgs/need-update.svg');
+}

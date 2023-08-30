@@ -32,6 +32,7 @@ export class ProfileComponent {
   profileContent: boolean[] = [true, false, false, false];
   profileContentTitle!: string;
   checkWindowVisibility: boolean = false;
+  profilePic = '../../assets/imgs/profile-pic.jpg';
   
 
   contentchanger(contentchosen: number){
@@ -78,8 +79,11 @@ export class ProfileComponent {
     this.activateCheckMode();
   }
 
+  receiveProfilePic(event: any){
+    this.profilePic = event;
+  }
+
   logout(){
-    debugger;
     this.auth.logout();
     this.router.navigate(['']);
   }

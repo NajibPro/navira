@@ -1,57 +1,22 @@
-<div class="notifications-list">
-    <div class="notification">
-        <div class="notification-title success-note">
-            <div class="notification-title-icon"></div>
-            <div class="notification-title-text">La vérification est terminé avec succées</div>
+<div class="notifications-list" >
+    <ng-container *ngFor="let note of notifications; let i = index">
+        <div class="notification">
+            <div class="notification-title success-note" 
+            [class.success-note]="note.type === 0"
+            [class.warning-note]="note.type === 1"
+            [class.danger-note]="note.type === 2"
+            [class.info-note]="note.type === 3">
+                <div class="notification-title-icon"></div>
+                <div class="notification-title-text">{{ note.title }}</div>
+            </div>
+
+            <div class="remove-notification" (click)="handleCloseClicks($event, i)"></div>
+
+            <div class="notification-message" [innerText]="note.message === notificationMessages[i]? note.message : notificationMessages[i] ">
+            </div>
+            <a *ngIf="showExpandEndicator[i]" class="read-more" (click)="handleLinkClicks($event, i)" [innerText]="note.message === notificationMessages[i]? 'Voir moins' : 'Voir plus'"></a>
         </div>
 
-        <div class="remove-notification"></div>
+    </ng-container>
 
-        <div class="notification-message">
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-             sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-    </div>
-    
-    <div class="notification">
-        <div class="notification-title warning-note">
-            <div class="notification-title-icon"></div>
-            <div class="notification-title-text">Vous devez renouvelez vos fichiers</div>
-        </div>
-
-        <div class="remove-notification"></div>
-
-        <div class="notification-message">
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-             sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-    </div>
-
-    <div class="notification">
-        <div class="notification-title danger-note">
-            <div class="notification-title-icon"></div>
-            <div class="notification-title-text">Ton dossier est invalid !!</div>
-        </div>
-
-        <div class="remove-notification"></div>
-
-        <div class="notification-message">
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-             sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-    </div>
-
-    <div class="notification">
-        <div class="notification-title info-note">
-            <div class="notification-title-icon"></div>
-            <div class="notification-title-text">Une nouvelle option est valable</div>
-        </div>
-
-        <div class="remove-notification"></div>
-
-        <div class="notification-message">
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-             sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-    </div>
 </div>
