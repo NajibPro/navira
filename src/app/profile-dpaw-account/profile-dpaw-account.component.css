@@ -1,0 +1,144 @@
+.profile-account{
+    flex-direction: column;
+    gap: 26px;
+}
+
+.main{
+    border-radius: 7px;
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.input-block,
+.input-block-sm{
+    gap: 3px;
+}
+
+input,
+select{
+    border-radius: 7px;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+.input-block{
+    align-items: center;
+}
+
+.file-label{
+    display: flex;
+    background-color: var(--primary-color);
+    gap: 9px;
+    padding: 12px 16px;
+    width: fit-content;
+    border-radius: 7px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.file-label-icon{
+    background-image: url('../../assets/imgs/Edit.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 31px;
+    height: 30px;
+}
+
+.buttons{
+    width: 100%;
+    font-size: 16px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+button{
+    border: none;
+    border-radius: 7px;
+    padding: 8px 16px;
+    transition: background-color 0.1s ease-out, color 0.1s ease-out;
+}
+
+.save{
+    /*(51, 145, 255)  E9EBED*/
+    background-color: rgba(51, 145, 255, 0.1);
+    /*R:64, G:123, B:255 */
+    color: rgba(64, 123, 255, 0.7);
+}
+
+.cancel{
+    background-color: #E9EBED;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+button:hover{
+    background-color: rgba(51, 145, 255, 0.2);
+    color: #407BFF;
+}
+
+.profile-files{
+    width: 100%;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.file-hanger{
+    background-color: white;
+    width: 100%;
+    gap: 37px;
+    border-radius: 7px;
+    padding: 15px 20px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.file-hanger-name{
+    white-space: nowrap;
+    font-size: 20px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 30px;
+}
+
+.file-hanger-icon{
+    background-position: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-width: 50px;
+    height: 35px;
+    border-right: solid 1px #d9d9d9;
+}
+
+.install-icon{
+    border-right: solid 1px var(--primary-color);
+    background-image: url('../../assets/imgs/file-uploaded.svg');
+}
+
+.add-icon{
+    background-image: url('../../assets/imgs/file-not-uploaded.svg');
+    border-right: solid 1px #00FF80;
+}
+
+@media screen and (max-width: 455px){
+    .buttons{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button{
+        width: 100%;
+    }
+
+    .file-label{
+        font-size: 16px;
+    }
+}
+
+.hidden{
+    display: none;
+}

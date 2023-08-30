@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProcedureService } from '../services/procedure.service';
 import { Dossier } from './dossier';
+import * as _ from 'lodash';
+import { ProfileService } from '../services/profile.service';
+import { User } from './user';
 
 @Component({
   selector: 'app-document',
@@ -9,12 +12,14 @@ import { Dossier } from './dossier';
 })
 export class DocumentComponent implements OnInit{
 
-  constructor(private procedureService: ProcedureService){
+  constructor(private procedureService: ProcedureService, private profileService: ProfileService){
 
   }
 
   ngOnInit(): void {
     this.document = this.procedureService.getDocument()
+    this.documentCopy = this.procedureService.getDocument()
+    this.userInfo = this.profileService.getUserInfo()
   }
 
   isArray(variable: string | string[]): string[] {
@@ -28,6 +33,8 @@ export class DocumentComponent implements OnInit{
 
   validationMode: boolean = false;
   document!: Dossier;
+  documentCopy!: Dossier;
+  userInfo!: User;
 
   startValidationMode(){
     this.validationMode = true;
@@ -47,5 +54,21 @@ export class DocumentComponent implements OnInit{
         doc.close();
       }
     }
+  }
+
+  validateInfo(event: MouseEvent, n: number, correctness: boolean){
+    event.preventDefault();
+    event.stopPropagation();
+    debugger;
+    this.document.info[n].isCorrect = correctness;
+    console.log(this.document.info)
+  }
+
+  cancelChanges(){
+    this.document = _.cloneDeep(this.documentCopy);
+  }
+
+  saveChanges(){
+    this.documentCopy = _.cloneDeep(this.document)
   }
 }

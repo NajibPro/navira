@@ -120,43 +120,50 @@ export class ProcedureService {
         {
           name: 'XXXX',
           type: "text",
-          data: 'XXXXXXXXXXXXXXX'
+          data: 'XXXXXXXXXXXXXXX',
+          isCorrect: null,
         },
 
         {
           name: 'NCI',
           type: "text",
-          data: '536433455353'
+          data: '536433455353',
+          isCorrect: null,
         },
 
         {
           name: 'email',
           type: "text",
-          data: 'najibbentayeb03@gmail.com'
+          data: 'najibbentayeb03@gmail.com',
+          isCorrect: null,
         },
 
         {
           name: 'Date de naissance',
           type: "text",
-          data: 'XX/XX/XXXX'
+          data: 'XX/XX/XXXX',
+          isCorrect: null,
         },
 
         {
           name: 'XXXX',
           type: "file",
-          data: '../../assets/imgs/danger-note.svg'
+          data: '../../assets/imgs/danger-note.svg',
+          isCorrect: null,
         },
 
         {
           name: 'beautiful file',
           type: "file",
-          data: '../../assets/imgs/danger-note.svg'
+          data: '../../assets/imgs/danger-note.svg',
+          isCorrect: null,
         },
 
         {
           name: 'XXXX',
           type: "list",
-          data: ['i', 'love', 'you', 'so', "much", ';)']
+          data: ['i', 'love', 'you', 'so', "much", ';)'],
+          isCorrect: null,
         },
       ]
     }
